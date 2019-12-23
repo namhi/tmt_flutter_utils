@@ -7,7 +7,8 @@ import 'datetime_range_type.dart';
 
 DateTime getFirstDateOfWeek(DateTime date) {
   final int dateOfWeek = date.weekday;
-  return date.add(Duration(days: -(dateOfWeek - 1)));
+  DateTime dateResult =  date.add(Duration(days: -(dateOfWeek - 1)));
+  return new DateTime(dateResult.year, dateResult.month, dateResult.day, 0,0,0);
 }
 
 DateTime getLastDateOfWeek(DateTime date) {
