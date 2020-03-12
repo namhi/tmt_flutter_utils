@@ -9,6 +9,8 @@ environment:
 
 dependencies:
   intl: ^0.15.8
+
+
   flutter:
     sdk: flutter
 
