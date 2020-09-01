@@ -36,6 +36,13 @@ extension StringExtensions on String {
     return stringToBase64.decode(this);
   }
 
+  String validate(bool Function(String) condition, String message) {
+    if (condition(this)) {
+      return null;
+    }
+    return message;
+  }
+
   String removeVietnameseMark({bool toLower = false}) =>
       toLower ? removeDiacritics(this.toLowerCase()) : removeDiacritics(this);
 }
