@@ -3,3 +3,6 @@ const String emailPattern =
 const String phonePattern = r"/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/";
 const String base64Pattern =
     r"^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$";
+
+const String urlPattern =
+    r"^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$";
