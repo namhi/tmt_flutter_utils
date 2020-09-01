@@ -21,6 +21,8 @@ extension StringExtensions on String {
     return RegExp(emailPattern).hasMatch(this);
   }
 
+  bool isUrl() => RegExp(urlPattern).hasMatch(this);
+
   bool isPhoneNumber() => RegExp(phonePattern).hasMatch(this);
   bool isBase64() => RegExp(base64Pattern).hasMatch(this);
   String encryptMd5() => md5.convert(utf8.encode(this)).toString();
