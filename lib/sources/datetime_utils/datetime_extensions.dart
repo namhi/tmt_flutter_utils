@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import 'datetime_until.dart';
 
 extension DateTimeExtensions on DateTime {
@@ -100,5 +102,9 @@ extension DateTimeExtensions on DateTime {
   ///
   String toStringSort() {
     return datetimeToStringSort(this);
+  }
+
+  String toStringFormat(String format) {
+    return DateFormat(format).format(this);
   }
 }

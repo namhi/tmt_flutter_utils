@@ -1,5 +1,8 @@
 import 'package:intl/intl.dart';
 
+const vietnameseCurrencyFormat = '###,###,###,###,###';
+const englishCurrencyFormat = '###,###,###,###.##';
+
 extension DoubleExtensions on num {
   String toStringFormat(String format, {String locate}) {
     if (format == null) {
@@ -18,4 +21,9 @@ extension DoubleExtensions on num {
     return NumberFormat(newFormat ?? '###,###,###,###,###', newLocate)
         .format(this);
   }
+
+  /// Format số thành định dạng tiền tệ phù hợp với ngôn ngữ
+  /// ví dụ: 10.34 với $
+  /// ví dụ: 10 với vnd
+  String toCurrencyFormat([String newFormat, String newLocate]) {}
 }
