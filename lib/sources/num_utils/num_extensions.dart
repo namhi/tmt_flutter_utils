@@ -9,4 +9,13 @@ extension DoubleExtensions on num {
       this,
     );
   }
+
+  String toPercentFormat([String newFormat, String locate]) {
+    return NumberFormat(newFormat ?? '###,###.##', locate).format(this);
+  }
+
+  String toVietnameseCurrencyFormat([String newFormat, String newLocate]) {
+    return NumberFormat(newFormat ?? '###,###,###,###,###', newLocate)
+        .format(this);
+  }
 }
