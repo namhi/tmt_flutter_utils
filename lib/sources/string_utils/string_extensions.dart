@@ -43,6 +43,8 @@ extension StringExtensions on String {
     return message;
   }
 
+  DateTime toDateTime() => DateTime.parse(this);
+
   String removeVietnameseMark({bool toLower = false}) =>
       toLower ? removeDiacritics(this.toLowerCase()) : removeDiacritics(this);
 }
