@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:ui';
+import 'dart:ui' as ui;
 import 'package:tmt_flutter_untils/sources/regex_pattern.dart';
 import 'package:crypto/crypto.dart';
 import 'package:diacritic/diacritic.dart';
@@ -49,7 +49,7 @@ extension StringExtensions on String {
   String removeVietnameseMark({bool toLower = false}) =>
       toLower ? removeDiacritics(this.toLowerCase()) : removeDiacritics(this);
 
-  Color toColor() {
-    return Color(int.parse(this));
+  ui.Color toColor() {
+    return ui.Color(int.parse(this));
   }
 }
