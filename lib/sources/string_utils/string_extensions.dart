@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:ui' as ui;
+import 'package:tmt_flutter_untils/sources/datetime_utils/datetime_until.dart';
 import 'package:tmt_flutter_untils/sources/regex_pattern.dart';
 import 'package:crypto/crypto.dart';
 import 'package:diacritic/diacritic.dart';
+import 'package:tmt_flutter_untils/sources/string_utils/string_utils.dart';
 
 extension StringExtensions on String {
   bool isNullOrEmpty() {
@@ -51,5 +53,21 @@ extension StringExtensions on String {
 
   ui.Color toColor() {
     return ui.Color(int.parse(this));
+  }
+
+  bool isLowerCase() {
+    return StringUtils.isLowerCase(this);
+  }
+
+  bool isUpperCase() {
+    return StringUtils.isUpperCase(this);
+  }
+
+  bool isAscii() {
+    return StringUtils.isAscii(this);
+  }
+
+  List<String> chunk(int chunkSize) {
+    return StringUtils.chunk(this, chunkSize);
   }
 }
