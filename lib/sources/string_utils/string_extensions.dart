@@ -71,9 +71,9 @@ extension StringExtensions on String {
     return StringUtils.chunk(this, chunkSize);
   }
 
-  String hideNumber(String number, {int start, int end, String replacement}) {
+  String hideNumber({int start, int end, String replacement}) {
     return StringUtils.hideNumber(
-      number,
+      this,
       start: start,
       end: end,
       replacement: replacement,
