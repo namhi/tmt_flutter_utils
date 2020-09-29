@@ -19,6 +19,29 @@ class StringUtils {
     return s == s.toLowerCase();
   }
 
+  static String hideNumber(String number,
+      {int start, int end, String replacement}) {
+    return number?.replaceRange(start, end, replacement);
+  }
+
+  ///   other method
+  ///   String get reverse {
+  //     if (isEmpty) {
+  //       return '';
+  //     }
+  //     return toList().reversed.reduce((value, element) => value += element);
+  //   }
+  static String reverse(String text) {
+    if (text == null || text == '') {
+      return '';
+    }
+    StringBuffer sb = StringBuffer();
+    for (int i = text.length - 1; i >= 0; i--) {
+      sb.writeCharCode(text.codeUnitAt(i));
+    }
+    return sb.toString();
+  }
+
   ///
   /// * "công ty quảng cáo" -> "Công ty quảng cáo"
   /// * "CÔNG TY QUẢNG CÁO" -> "Công ty quảng cáo"'

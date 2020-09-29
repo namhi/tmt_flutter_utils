@@ -70,4 +70,13 @@ extension StringExtensions on String {
   List<String> chunk(int chunkSize) {
     return StringUtils.chunk(this, chunkSize);
   }
+
+  String hideNumber(String number, {int start, int end, String replacement}) {
+    return StringUtils.hideNumber(
+      number,
+      start: start,
+      end: end,
+      replacement: replacement,
+    );
+  }
 }
