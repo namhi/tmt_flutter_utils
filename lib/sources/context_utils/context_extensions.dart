@@ -16,6 +16,7 @@ extension ContextExtensions on BuildContext {
 
   bool get isPhone => mediaQueryShortestSide < 660;
   bool get isTablet => mediaQueryShortestSide >= 720;
+  bool get isKeyboardOpen => MediaQuery.of(this).viewInsets.bottom != 0;
 
   /// Get widget of T base on  media query size
   T responsiveWidget<T>({T mobile, T tablet, T desktop}) {
