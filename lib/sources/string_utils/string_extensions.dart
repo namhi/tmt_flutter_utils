@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 import 'package:tmt_flutter_untils/sources/datetime_utils/datetime_until.dart';
 import 'package:tmt_flutter_untils/sources/regex_pattern.dart';
 import 'package:crypto/crypto.dart';
-import 'package:diacritic/diacritic.dart';
+import 'package:diacritic/diacritic.dart' as diacritic;
 import 'package:tmt_flutter_untils/sources/string_utils/string_utils.dart';
 
 extension StringExtensions on String {
@@ -48,8 +48,14 @@ extension StringExtensions on String {
 
   DateTime toDateTime() => DateTime.parse(this);
 
-  String removeVietnameseMark({bool toLower = false}) =>
-      toLower ? removeDiacritics(this.toLowerCase()) : removeDiacritics(this);
+  String removeVietnameseMark({bool toLower = false}) => toLower
+      ? diacritic.removeDiacritics(this.toLowerCase())
+      : diacritic.removeDiacritics(this);
+
+  String removeDiacritics([bool toLower = false]) {
+    String key = toLower ? this.toLowerCase() : this;
+    return diacritic.removeDiacritics(key);
+  }
 
   ui.Color toColor() {
     return ui.Color(int.parse(this));
