@@ -6,3 +6,6 @@ const String base64Pattern =
 
 const String urlPattern =
     r"^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$";
+
+const String phoneNumberPattern =
+    r"(?:\b|[^0-9])((0|84|\+84)(\s?)([2-9]|1[0-9])(\d(\s|\.)?){8})(?:\b|[^0-9])";

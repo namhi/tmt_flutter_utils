@@ -88,4 +88,7 @@ extension StringExtensions on String {
 
   String trimUnicode(int startAt, [String prefix = '...']) =>
       StringUtils.trimUnicode(this, startAt, prefix);
+
+  String extractPhoneNumber([Map<String, String> replace = const {"o": "0"}]) =>
+      StringUtils.extractPhoneNumber(this, replace);
 }

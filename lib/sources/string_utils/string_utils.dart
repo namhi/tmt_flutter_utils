@@ -78,7 +78,7 @@ class StringUtils {
       .hasMatch(s);
 
   static bool isEmail(String s) => RegExp(emailPattern).hasMatch(s);
-  static String removeVietnameseMark(String s, [bool toLower]) {
+  static String removeVietnameseMark(String s, [bool toLower = false]) {
     String key = toLower ? s.toLowerCase() : s;
     return removeDiacritics(key);
   }
@@ -96,5 +96,18 @@ class StringUtils {
     } else {
       return "";
     }
+  }
+
+  static String extractPhoneNumber(String s,
+      [Map<String, String> replace = const {"o": "0"}]) {
+    String input = s;
+    if (replace != null && replace.isNotEmpty) {
+      for (var itm in replace.keys) {
+        input = input.replaceAll(itm, replace[itm]);
+      }
+    }
+
+    final String result =
+        RegExp(phoneNumberPattern).firstMatch(s)?.group(1) ?? "";
   }
 }
