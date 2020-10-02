@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:diacritic/diacritic.dart';
+
 import '../regex_pattern.dart';
 
 class StringUtils {
@@ -76,4 +78,8 @@ class StringUtils {
       .hasMatch(s);
 
   static bool isEmail(String s) => RegExp(emailPattern).hasMatch(s);
+  static String removeVietnameseMark(String s, [bool toLower]) {
+    String key = toLower ? s.toLowerCase() : s;
+    return removeDiacritics(key);
+  }
 }
