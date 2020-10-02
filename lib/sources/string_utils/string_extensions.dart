@@ -85,4 +85,7 @@ extension StringExtensions on String {
       replacement: replacement,
     );
   }
+
+  String trimUnicode(int startAt, [String prefix = '...']) =>
+      StringUtils.trimUnicode(this, startAt, prefix);
 }

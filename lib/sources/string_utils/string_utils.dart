@@ -82,4 +82,19 @@ class StringUtils {
     String key = toLower ? s.toLowerCase() : s;
     return removeDiacritics(key);
   }
+
+  /// Trim a string at [startAt]
+  static String trimUnicode(String input, int startAt, [prefix = "..."]) {
+    if (input == null) return null;
+
+    if (input != "") {
+      if (input.runes.length >= startAt) {
+        return String.fromCharCodes(input.runes, 0, startAt) + prefix;
+      } else {
+        return input;
+      }
+    } else {
+      return "";
+    }
+  }
 }
