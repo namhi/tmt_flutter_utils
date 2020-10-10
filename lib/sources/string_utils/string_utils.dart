@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by NamNV, Công ty TNHH TM& DV Trực Tuyến Trường Minh Thịnh on 4/9/19 9:59 AM
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 4/9/19 9:53 AM
+ *
+ */
+
 import 'dart:convert';
 
 import 'package:diacritic/diacritic.dart';
@@ -109,5 +117,42 @@ class StringUtils {
 
     final String result =
         RegExp(phoneNumberPattern).firstMatch(s)?.group(1) ?? "";
+  }
+
+  static bool isBool(String value) {
+    if (value == null) {
+      return false;
+    }
+    return (value == 'true' || value == 'false');
+  }
+
+  static bool isNumber(String value) {
+    if (value == null) {
+      return false;
+    }
+    return num.tryParse(value) is num;
+  }
+
+  static bool isInt(String value) {
+    if (value == null) {
+      return false;
+    }
+
+    return int.tryParse(value) is int;
+  }
+
+  static bool isDouble(String value) {
+    if (value == null) {
+      return false;
+    }
+    return double.tryParse(value) is double;
+  }
+
+  static bool isNull(dynamic value) => value == null;
+  static bool isNumericOnly(String value) {
+    if (value == null) {
+      return false;
+    }
+    return RegExp(r'^\d+$').hasMatch(value);
   }
 }
