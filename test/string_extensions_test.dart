@@ -40,6 +40,23 @@ void main() {
       }
     }
   });
+
+  test('Test isPhoneNumber list', () {
+    final Map<String, bool> testValues = {
+      '0908075455': true,
+      '0379566994': true,
+      '0903545466': true,
+      '0863545466': true,
+      '0963545466': true,
+      '09abc09394': false,
+    };
+
+    for (final String itm in testValues.keys) {
+      print('test $itm');
+      bool result = itm.isPhoneNumber();
+      expect(result, testValues[itm]);
+    }
+  });
 }
 
 class _TestEntry {

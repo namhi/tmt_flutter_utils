@@ -1,14 +1,15 @@
 library tmt_flutter_untils;
 
+import 'package:flutter/material.dart' as material;
 import 'package:intl/intl.dart';
-
 import 'datetime_range.dart';
 import 'datetime_range_type.dart';
 
 DateTime getFirstDateOfWeek(DateTime date) {
   final int dateOfWeek = date.weekday;
-  DateTime dateResult =  date.add(Duration(days: -(dateOfWeek - 1)));
-  return new DateTime(dateResult.year, dateResult.month, dateResult.day, 0,0,0);
+  DateTime dateResult = date.add(Duration(days: -(dateOfWeek - 1)));
+  return new DateTime(
+      dateResult.year, dateResult.month, dateResult.day, 0, 0, 0);
 }
 
 DateTime getLastDateOfWeek(DateTime date) {
@@ -170,5 +171,18 @@ String datetimeToStringSort(DateTime date, [DateTime toDay]) {
     return DateFormat("dd/MM").format(date);
   } else {
     return DateFormat("dd/MM/yyyy").format(date);
+  }
+}
+
+class DateUtils {
+  DateUtils._internal();
+  static DateTime changeDate(DateTime current, DateTime changeDate) {
+    return DateTime(changeDate.year, changeDate.month, changeDate.day,
+        current.hour, current.month, current.second);
+  }
+
+  static DateTime changeTime(DateTime current, material.TimeOfDay timeOfDay) {
+    return DateTime(current.year, current.month, current.day, timeOfDay.hour,
+        timeOfDay.minute, current.second);
   }
 }

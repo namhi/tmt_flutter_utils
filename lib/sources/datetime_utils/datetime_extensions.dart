@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'datetime_until.dart';
@@ -107,4 +108,8 @@ extension DateTimeExtensions on DateTime {
   String toStringFormat(String format) {
     return DateFormat(format).format(this);
   }
+
+  DateTime changeDate(DateTime input) => DateUtils.changeDate(this, input);
+  DateTime changeTime(TimeOfDay timeOfDay) =>
+      DateUtils.changeTime(this, timeOfDay);
 }

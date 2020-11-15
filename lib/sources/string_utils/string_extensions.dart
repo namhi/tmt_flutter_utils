@@ -28,7 +28,7 @@ extension StringExtensions on String {
   bool isNullOrEmpty() => this == null || this.isEmpty;
   bool isEmail() => RegExp(emailPattern).hasMatch(this);
   bool isUrl() => RegExp(urlPattern).hasMatch(this);
-  bool isPhoneNumber() => RegExp(phonePattern).hasMatch(this);
+  bool isPhoneNumber() => RegExp(phoneNumberPattern).hasMatch(this);
   bool isBase64() => RegExp(base64Pattern).hasMatch(this);
 
   T toEnum<T>(Iterable<T> values) {
