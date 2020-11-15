@@ -178,7 +178,7 @@ class DateUtils {
   DateUtils._internal();
   static DateTime changeDate(DateTime current, DateTime changeDate) {
     return DateTime(changeDate.year, changeDate.month, changeDate.day,
-        current.hour, current.month, current.second);
+        current.hour, current.minute, current.second);
   }
 
   static DateTime changeTime(DateTime current, material.TimeOfDay timeOfDay) {
