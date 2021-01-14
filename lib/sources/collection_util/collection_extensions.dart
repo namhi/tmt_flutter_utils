@@ -21,4 +21,8 @@ extension IterableExtension<T> on Iterable<T> {
   int sum(int Function(T) pattern) {
     return ListUtils.sum(this, pattern);
   }
+
+  int lengthOrDefault([int defaultValue = 0]) {
+    return this?.length ?? 0;
+  }
 }

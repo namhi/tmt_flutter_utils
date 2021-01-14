@@ -105,4 +105,8 @@ class ListUtils {
       }
     }
   }
+
+  static int getLengthOrDefault(List list, [int defaultValue = 0]) {
+    return list?.length ?? defaultValue;
+  }
 }
