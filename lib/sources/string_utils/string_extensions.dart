@@ -28,9 +28,18 @@ extension StringExtensions on String {
   bool isNullOrEmpty() => this == null || this.isEmpty;
   bool isEmail() => RegExp(emailPattern).hasMatch(this);
   bool isUrl() => RegExp(urlPattern).hasMatch(this);
+
+  /// Indicates whether a string is a phone number or not.
   bool isPhoneNumber() => RegExp(phoneNumberPattern).hasMatch(this);
+
+  /// Indicates whether a string is encrypted of base64 format.d
   bool isBase64() => RegExp(base64Pattern).hasMatch(this);
 
+  /// Indicates whether a string is ipv4 format or not.
+  bool isIpv4() => StringUtils.isIPv4(this);
+
+  /// Indicates whether a string is ipv6 format or not.
+  bool isIpv6() => StringUtils.isIPv6(this);
   T toEnum<T>(Iterable<T> values) {
     return values.firstWhere((f) => f.toString().split('.').last == this,
         orElse: () => null);
@@ -69,10 +78,13 @@ extension StringExtensions on String {
     return ui.Color(int.parse(this));
   }
 
+  /// Split a string into many chunks by chunkSIze
   List<String> chunk(int chunkSize) {
     return StringUtils.chunk(this, chunkSize);
   }
 
+  /// hide characters from [start] to [end] by [replacement]
+  /// For example: 0908075555 -> 09****5555
   String hideNumber({int start, int end, String replacement}) {
     return StringUtils.hideNumber(
       this,
@@ -82,6 +94,7 @@ extension StringExtensions on String {
     );
   }
 
+  /// Start substring a unicode string start at [startAt] by [prefix].
   String trimUnicode(int startAt, [String prefix = '...']) =>
       StringUtils.trimUnicode(this, startAt, prefix);
 
