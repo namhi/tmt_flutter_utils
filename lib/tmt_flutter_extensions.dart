@@ -7,3 +7,4 @@ export 'sources/bool_utils.dart';
 export 'sources/num_utils/double_extensions.dart';
 export 'sources/num_utils/int_extensions.dart';
 export 'sources/color_utils/color_extensions.dart';
+export 'sources/widget_extensions.dart';
