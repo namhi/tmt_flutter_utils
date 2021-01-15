@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' as material;
 import 'package:intl/intl.dart';
 
 import 'datetime_until.dart';
+import 'package:timeago/timeago.dart' as timeAgo;
 
 extension DateTimeExtensions on DateTime {
   String toDayOfWeek(String locate) {
@@ -112,4 +113,8 @@ extension DateTimeExtensions on DateTime {
   DateTime changeDate(DateTime input) => DateUtils.changeDate(this, input);
   DateTime changeTime(material.TimeOfDay timeOfDay) =>
       DateUtils.changeTime(this, timeOfDay);
+
+  String toTimeAgo(String local) {
+    return timeAgo.format(this, locale: local);
+  }
 }

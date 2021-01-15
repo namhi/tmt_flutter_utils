@@ -1,8 +1,8 @@
 name: tmt_flutter_untils
-description: Flutter extension and until library
+description: Flutter extension and utils library
 version: 0.0.7
 author: Nguyễn Văn Nam
-homepage:
+homepage: tmtsofts.com
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
@@ -10,6 +10,8 @@ environment:
 dependencies:
   intl: ^0.16.1
   diacritic: ^0.1.1
+  timeago: ^2.0.29
+  crypto: ^2.1.5
 
   flutter:
     sdk: flutter
