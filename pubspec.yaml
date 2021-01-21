@@ -11,7 +11,7 @@ dependencies:
   intl: ^0.16.1
   diacritic: ^0.1.1
   timeago: 2.0.27
-  crypto: 2.1.5
+  crypto: 2.1.4
 
   flutter:
     sdk: flutter
