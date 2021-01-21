@@ -10,8 +10,8 @@ environment:
 dependencies:
   intl: ^0.16.1
   diacritic: ^0.1.1
-  timeago: ^2.0.29
-  crypto: ^2.1.5
+  timeago: 2.0.27
+  crypto: 2.1.5
 
   flutter:
     sdk: flutter
