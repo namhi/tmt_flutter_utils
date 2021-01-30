@@ -11,4 +11,8 @@ extension IntExtensions on int {
     }
     return this;
   }
+
+  Duration get hour => Duration(hours: this);
+  Duration get minute => Duration(minutes: this);
+  Duration get second => Duration(seconds: this);
 }
