@@ -26,4 +26,12 @@ extension NumExtensions on num {
   /// ví dụ: 10.34 với $
   /// ví dụ: 10 với vnd
   String toCurrencyFormat([String newFormat, String newLocate]) {}
+
+  Future<void> delaySecond() async {
+    return await Future.delayed(Duration(seconds: this));
+  }
+
+  Future<void> delayMillisecond() async {
+    return await Future.delayed(Duration(milliseconds: this));
+  }
 }
