@@ -10,6 +10,7 @@ import 'dart:convert';
 
 import 'package:diacritic/diacritic.dart';
 
+import '../constant.dart';
 import '../regex_pattern.dart';
 
 class StringUtils {
@@ -86,6 +87,24 @@ class StringUtils {
       .hasMatch(s);
 
   static bool isEmail(String s) => RegExp(emailPattern).hasMatch(s);
+
+  /// Extract the first email from string [s].
+  /// The value [s] can't be null.
+  static String extractEmail(String s) {
+    if (s == null) {
+      throw ArgumentError('input must not be null');
+    }
+    final RegExp exp = RegExp(containEmailPattern);
+    final String email = exp.stringMatch(s);
+    return email;
+  }
+
+  /// Whether the string [s] is contain a email address.
+  static bool isContainEmail(String s) {
+    final RegExp exp = RegExp(containEmailPattern);
+    return exp.hasMatch(s);
+  }
+
   static String removeVietnameseMark(String s, [bool toLower = false]) {
     String key = toLower ? s.toLowerCase() : s;
     return removeDiacritics(key);

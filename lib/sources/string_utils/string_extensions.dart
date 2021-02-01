@@ -13,6 +13,8 @@ import 'package:crypto/crypto.dart';
 import 'package:diacritic/diacritic.dart' as diacritic;
 import 'package:tmt_flutter_untils/sources/string_utils/string_utils.dart';
 
+import '../constant.dart';
+
 extension StringExtensions on String {
   bool isBool() => StringUtils.isBool(this);
   bool isNull() => StringUtils.isNull(this);
@@ -28,6 +30,15 @@ extension StringExtensions on String {
   bool isNullOrEmpty() => this == null || this.isEmpty;
   bool isEmail() => RegExp(emailPattern).hasMatch(this);
   bool isUrl() => RegExp(urlPattern).hasMatch(this);
+
+  /// Extract first email from string.
+  /// Return null value if string not has an email.
+  /// Throw a exception if the input string is null.
+  String extractEmail() => StringUtils.extractEmail(this);
+
+  /// Whether a string is contain a email.
+  /// throw a exception if the input string is null.
+  bool get isContainEmail => StringUtils.isContainEmail(this);
 
   /// Indicates whether a string is a phone number or not.
   bool isPhoneNumber() => RegExp(phoneNumberPattern).hasMatch(this);
