@@ -117,4 +117,8 @@ extension DateTimeExtensions on DateTime {
   String toTimeAgo(String local) {
     return timeAgo.format(this, locale: local);
   }
+
+  DateTime clearTime() {
+    return DateTime(year, month, day, 0, 0, 0);
+  }
 }
