@@ -1,8 +1,8 @@
 extension BoolExtensions on bool {
   String toCustomString(String trueValue, String falseValue,
-      [String nullValue]) {
+      [String? nullValue]) {
     if (this == null) {
-      return nullValue;
+      return nullValue!;
     }
     return this ? trueValue : falseValue;
   }

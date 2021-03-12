@@ -1,10 +1,10 @@
 typedef ConvertJsonToObject = Function(Map<String, dynamic> json);
 
 class JsonConvertGlobal {
-  static Map<Type, ConvertJsonToObject> configs;
+  static late Map<Type, ConvertJsonToObject> configs;
   static T deserialize<T>(Map<String, dynamic> json) {
     if (configs[T] != null) {
-      ConvertJsonToObject fun = configs[T];
+      ConvertJsonToObject fun = configs[T]!;
       T result = fun(json);
       return result;
     }
@@ -14,11 +14,11 @@ class JsonConvertGlobal {
 
 class JsonConvert<T> {
   JsonConvert({this.configs});
-  final Map<Type, ConvertJsonToObject> configs;
+  final Map<Type, ConvertJsonToObject>? configs;
 
   T deserialize<T>(Map<String, dynamic> json) {
-    if (configs[T] != null) {
-      ConvertJsonToObject fun = configs[T];
+    if (configs![T] != null) {
+      ConvertJsonToObject fun = configs![T]!;
       T result = fun(json);
       return result;
     }

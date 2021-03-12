@@ -151,7 +151,7 @@ main() {
     ];
 
     for (var itm in testValue) {
-      var result = datetimeToStringSort(itm[0], now);
+      var result = datetimeToStringSort(itm[0] as DateTime, now);
       print(result);
       expect(result, equals(itm[1]));
     }

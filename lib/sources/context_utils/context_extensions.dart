@@ -19,7 +19,7 @@ extension ContextExtensions on BuildContext {
   bool get isKeyboardOpen => MediaQuery.of(this).viewInsets.bottom != 0;
 
   /// Get widget of T base on  media query size
-  T responsiveWidget<T>({T mobile, T tablet, T desktop}) {
+  T? responsiveWidget<T>({T? mobile, T? tablet, T? desktop}) {
     double width = mediaQuerySize.shortestSide;
     if (Platform.isWindows) {
       width = mediaQuerySize.width;

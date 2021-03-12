@@ -14,15 +14,23 @@ extension CollectionExtensions on List {
 extension IterableExtension<T> on Iterable<T> {
   /// Sum value from object by [pattern]
 
-  double sumByDouble(double Function(T) pattern) {
-    return ListUtils.sumBy(this, pattern);
+  num sumBy(num Function(T) pattern) {
+    return ListUtils.sumBy<T>(this, pattern);
   }
 
-  int sum(int Function(T) pattern) {
-    return ListUtils.sum(this, pattern);
+  int sumByInt(int Function(T) pattern) {
+    return ListUtils.sumByInt(this, pattern);
   }
 
+  @Deprecated('Remove when update to null safety. Using length instead')
   int lengthOrDefault([int defaultValue = 0]) {
-    return this?.length ?? 0;
+    return this.length;
+  }
+}
+
+extension IterableNullExtension<T> on Iterable<T>? {
+  @Deprecated('Remove when update to null safety. Using length instead')
+  int lengthOrDefault([int defaultValue = 0]) {
+    return this?.length ?? defaultValue;
   }
 }

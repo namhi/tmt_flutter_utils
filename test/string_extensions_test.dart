@@ -32,11 +32,11 @@ void main() {
     for (_TestEntry entry in _tests) {
       if (entry.number != null) {
         final String result =
-            entry.number.toStringFormat(entry.format, locate: entry.locate);
+            entry.number!.toStringFormat(entry.format, locate: entry.locate);
         expect(result, entry.trueValue);
       } else {
         final String result =
-            entry.number.toStringFormat(entry.format, locate: entry.locate);
+            entry.number!.toStringFormat(entry.format, locate: entry.locate);
       }
     }
   });
@@ -60,10 +60,10 @@ void main() {
 }
 
 class _TestEntry {
-  num number;
-  String format;
-  String trueValue;
+  num? number;
+  String? format;
+  String? trueValue;
 
-  String locate;
+  String? locate;
   _TestEntry({this.number, this.format, this.trueValue, this.locate});
 }

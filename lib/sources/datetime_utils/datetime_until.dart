@@ -29,7 +29,7 @@ DateTime getLastDateOfMonth(DateTime date) {
       lastDate.year, lastDate.month, lastDate.day, 23, 59, 59, 999, 999);
 }
 
-DateTimeRange getTimeRangeToday([DateTime date]) {
+DateTimeRange getTimeRangeToday([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "Hôm nay",
@@ -39,7 +39,7 @@ DateTimeRange getTimeRangeToday([DateTime date]) {
           new DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
 }
 
-DateTimeRange getTimeRangeYesterday([DateTime date]) {
+DateTimeRange getTimeRangeYesterday([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "Hôm qua",
@@ -49,7 +49,7 @@ DateTimeRange getTimeRangeYesterday([DateTime date]) {
           new DateTime(now.year, now.month, now.day - 1, 23, 59, 59, 999, 999));
 }
 
-DateTimeRange getTimeRangeLast7Day([DateTime date]) {
+DateTimeRange getTimeRangeLast7Day([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "7 ngày qua",
@@ -59,7 +59,7 @@ DateTimeRange getTimeRangeLast7Day([DateTime date]) {
           new DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
 }
 
-DateTimeRange getTimeRangeLast28Day([DateTime date]) {
+DateTimeRange getTimeRangeLast28Day([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "28 ngày qua",
@@ -69,7 +69,7 @@ DateTimeRange getTimeRangeLast28Day([DateTime date]) {
           new DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
 }
 
-DateTimeRange getTimeRangeLast30Day([DateTime date]) {
+DateTimeRange getTimeRangeLast30Day([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "30 ngày qua",
@@ -79,7 +79,7 @@ DateTimeRange getTimeRangeLast30Day([DateTime date]) {
           new DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
 }
 
-DateTimeRange getTimeRangeLast90Day([DateTime date]) {
+DateTimeRange getTimeRangeLast90Day([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "90 ngày qua",
@@ -89,7 +89,7 @@ DateTimeRange getTimeRangeLast90Day([DateTime date]) {
           new DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
 }
 
-DateTimeRange getTimeRangeThisWeek([DateTime date]) {
+DateTimeRange getTimeRangeThisWeek([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "Tuần này",
@@ -98,7 +98,7 @@ DateTimeRange getTimeRangeThisWeek([DateTime date]) {
       endDate: getLastDateOfWeek(now));
 }
 
-DateTimeRange getTimeRangeLastWeek([DateTime date]) {
+DateTimeRange getTimeRangeLastWeek([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "Tuần trước",
@@ -107,7 +107,7 @@ DateTimeRange getTimeRangeLastWeek([DateTime date]) {
       endDate: getLastDateOfWeek(now.add(Duration(days: -7))));
 }
 
-DateTimeRange getTimeRangeThisMonth([DateTime date]) {
+DateTimeRange getTimeRangeThisMonth([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "Tháng này",
@@ -116,7 +116,7 @@ DateTimeRange getTimeRangeThisMonth([DateTime date]) {
       endDate: getLastDateOfMonth(now));
 }
 
-DateTimeRange getTimeRangeCustomMonth([DateTime date]) {
+DateTimeRange getTimeRangeCustomMonth([DateTime? date]) {
   var now = date ?? DateTime.now();
   var today = getTimeRangeToday(now);
   return DateTimeRange(
@@ -126,7 +126,7 @@ DateTimeRange getTimeRangeCustomMonth([DateTime date]) {
       endDate: today.endDate);
 }
 
-DateTimeRange getTimeRangeCustomDay([DateTime date]) {
+DateTimeRange getTimeRangeCustomDay([DateTime? date]) {
   var now = date ?? DateTime.now();
   var today = getTimeRangeToday(now);
   return DateTimeRange(
@@ -136,7 +136,7 @@ DateTimeRange getTimeRangeCustomDay([DateTime date]) {
       endDate: today.endDate);
 }
 
-DateTimeRange getTimeRangeLastMonth([DateTime date]) {
+DateTimeRange getTimeRangeLastMonth([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "Tháng trước",
@@ -145,7 +145,7 @@ DateTimeRange getTimeRangeLastMonth([DateTime date]) {
       endDate: getFirstDateOfMonth(now).add(Duration(microseconds: -1)));
 }
 
-DateTimeRange getTimeRangeThisYear([DateTime date]) {
+DateTimeRange getTimeRangeThisYear([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "Năm nay",
@@ -154,7 +154,7 @@ DateTimeRange getTimeRangeThisYear([DateTime date]) {
       endDate: new DateTime(now.year, 12, 31, 23, 59, 59, 999, 999));
 }
 
-DateTimeRange getTimeRangeLastYear([DateTime date]) {
+DateTimeRange getTimeRangeLastYear([DateTime? date]) {
   var now = date ?? DateTime.now();
   return DateTimeRange(
       name: "Năm trước",
@@ -163,7 +163,7 @@ DateTimeRange getTimeRangeLastYear([DateTime date]) {
       endDate: new DateTime(now.year - 1, 12, 31, 23, 59, 59, 999, 999));
 }
 
-String datetimeToStringSort(DateTime date, [DateTime toDay]) {
+String datetimeToStringSort(DateTime date, [DateTime? toDay]) {
   var now = toDay ?? DateTime.now();
   if (date.year == now.year && date.month == now.month) {
     return DateFormat("dd").format(date);

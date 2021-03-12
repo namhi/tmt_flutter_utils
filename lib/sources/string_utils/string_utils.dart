@@ -32,9 +32,9 @@ class StringUtils {
     return s == s.toLowerCase();
   }
 
-  static String hideNumber(String number,
-      {int start, int end, String replacement}) {
-    return number?.replaceRange(start, end, replacement);
+  static String? hideNumber(String number,
+      {required int start, int? end, required String replacement}) {
+    return number.replaceRange(start, end, replacement);
   }
 
   ///   other method
@@ -45,7 +45,7 @@ class StringUtils {
   //     return toList().reversed.reduce((value, element) => value += element);
   //   }
   static String reverse(String text) {
-    if (text == null || text == '') {
+    if (text == '') {
       return '';
     }
     StringBuffer sb = StringBuffer();
@@ -90,12 +90,12 @@ class StringUtils {
 
   /// Extract the first email from string [s].
   /// The value [s] can't be null.
-  static String extractEmail(String s) {
-    if (s == null) {
-      throw ArgumentError('input must not be null');
-    }
+  static String? extractEmail(String s) {
+    // if (s == null) {
+    //   throw ArgumentError('input must not be null');
+    // }
     final RegExp exp = RegExp(containEmailPattern);
-    final String email = exp.stringMatch(s);
+    final String? email = exp.stringMatch(s);
     return email;
   }
 
@@ -111,8 +111,8 @@ class StringUtils {
   }
 
   /// Trim a string at [startAt]
-  static String trimUnicode(String input, int startAt, [prefix = "..."]) {
-    if (input == null) return null;
+  static String? trimUnicode(String input, int startAt, [prefix = "..."]) {
+    // if (input == null) return null;
 
     if (input != "") {
       if (input.runes.length >= startAt) {
@@ -125,12 +125,12 @@ class StringUtils {
     }
   }
 
-  static String extractPhoneNumber(String s,
+  static String? extractPhoneNumber(String s,
       [Map<String, String> replace = const {"o": "0"}]) {
     String input = s;
-    if (replace != null && replace.isNotEmpty) {
+    if (replace.isNotEmpty) {
       for (var itm in replace.keys) {
-        input = input.replaceAll(itm, replace[itm]);
+        input = input.replaceAll(itm, replace[itm]!);
       }
     }
 
@@ -139,39 +139,39 @@ class StringUtils {
   }
 
   static bool isBool(String value) {
-    if (value == null) {
-      return false;
-    }
+    // if (value == null) {
+    //   return false;
+    // }
     return (value == 'true' || value == 'false');
   }
 
   static bool isNumber(String value) {
-    if (value == null) {
-      return false;
-    }
+    // if (value == null) {
+    //   return false;
+    // }
     return num.tryParse(value) is num;
   }
 
   static bool isInt(String value) {
-    if (value == null) {
-      return false;
-    }
+    // if (value == null) {
+    //   return false;
+    // }
 
     return int.tryParse(value) is int;
   }
 
   static bool isDouble(String value) {
-    if (value == null) {
-      return false;
-    }
+    // if (value == null) {
+    //   return false;
+    // }
     return double.tryParse(value) is double;
   }
 
   static bool isNull(dynamic value) => value == null;
   static bool isNumericOnly(String value) {
-    if (value == null) {
-      return false;
-    }
+    // if (value == null) {
+    //   return false;
+    // }
     return RegExp(r'^\d+$').hasMatch(value);
   }
 }

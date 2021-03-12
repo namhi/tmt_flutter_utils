@@ -8,6 +8,7 @@
 
 import 'dart:convert';
 import 'dart:ui' as ui;
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:tmt_flutter_untils/sources/regex_pattern.dart';
 import 'package:crypto/crypto.dart';
 import 'package:diacritic/diacritic.dart' as diacritic;
@@ -34,7 +35,7 @@ extension StringExtensions on String {
   /// Extract first email from string.
   /// Return null value if string not has an email.
   /// Throw a exception if the input string is null.
-  String extractEmail() => StringUtils.extractEmail(this);
+  String? extractEmail() => StringUtils.extractEmail(this);
 
   /// Whether a string is contain a email.
   /// throw a exception if the input string is null.
@@ -51,9 +52,8 @@ extension StringExtensions on String {
 
   /// Indicates whether a string is ipv6 format or not.
   bool isIpv6() => StringUtils.isIPv6(this);
-  T toEnum<T>(Iterable<T> values) {
-    return values.firstWhere((f) => f.toString().split('.').last == this,
-        orElse: () => null);
+  T? toEnum<T>(Iterable<T> values) {
+    return values.firstWhereOrNull((f) => f.toString().split('.').last == this);
   }
 
   String encryptMd5() => md5.convert(utf8.encode(this)).toString();
@@ -67,7 +67,7 @@ extension StringExtensions on String {
     return stringToBase64.decode(this);
   }
 
-  String validate(bool Function(String) condition, String message) {
+  String? validate(bool Function(String) condition, String message) {
     if (condition(this)) {
       return null;
     }
@@ -96,7 +96,8 @@ extension StringExtensions on String {
 
   /// hide characters from [start] to [end] by [replacement]
   /// For example: 0908075555 -> 09****5555
-  String hideNumber({int start, int end, String replacement}) {
+  String? hideNumber(
+      {required int start, int? end, required String replacement}) {
     return StringUtils.hideNumber(
       this,
       start: start,
@@ -106,17 +107,18 @@ extension StringExtensions on String {
   }
 
   /// Start substring a unicode string start at [startAt] by [prefix].
-  String trimUnicode(int startAt, [String prefix = '...']) =>
+  String? trimUnicode(int startAt, [String prefix = '...']) =>
       StringUtils.trimUnicode(this, startAt, prefix);
 
-  String extractPhoneNumber([Map<String, String> replace = const {"o": "0"}]) =>
+  String? extractPhoneNumber(
+          [Map<String, String> replace = const {"o": "0"}]) =>
       StringUtils.extractPhoneNumber(this, replace);
 
-  dynamic parseJson({Object reviver(Object key, Object value)}) {
+  dynamic parseJson({Object reviver(Object? key, Object? value)?}) {
     return jsonDecode(this, reviver: reviver);
   }
 
-  int toInt({int radix = 10}) {
+  int? toInt({int radix = 10}) {
     try {
       return int.parse(this, radix: radix);
     } catch (e) {
@@ -124,7 +126,7 @@ extension StringExtensions on String {
     }
   }
 
-  double toDouble() {
+  double? toDouble() {
     try {
       return double.parse(this);
     } catch (error) {

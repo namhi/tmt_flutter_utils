@@ -1,16 +1,16 @@
 class ListUtils {
-  static double sumBy<T>(Iterable<T> list, num Function(T) pattern) {
-    ArgumentError.checkNotNull(pattern, 'pattern');
+  static num sumBy<T>(Iterable<T> list, num Function(T) pattern) {
+    // ArgumentError.checkNotNull(pattern, 'pattern'); done need on null safety.
     return list
         .map(pattern)
         .fold(0.0, (previousValue, element) => previousValue + element);
   }
 
-  static int sum<T>(Iterable<T> list, num Function(T) pattern) {
-    ArgumentError.checkNotNull(pattern, 'pattern');
+  static int sumByInt<T>(Iterable<T> list, num Function(T) pattern) {
+    // ArgumentError.checkNotNull(pattern, 'pattern');
     return list
         .map(pattern)
-        .fold(0, (previousValue, element) => previousValue + element);
+        .fold(0, (previousValue, element) => previousValue + (element as int));
   }
 
   static List quickSort(List list) {
@@ -106,7 +106,10 @@ class ListUtils {
     }
   }
 
-  static int getLengthOrDefault(List list, [int defaultValue = 0]) {
+  /// Return length of [list] if list is not null.
+  /// Return default value (Default is 0) when the [list] is null.
+  /// Using for nullable List of num.
+  static int getLengthOrDefault(List? list, [int defaultValue = 0]) {
     return list?.length ?? defaultValue;
   }
 }

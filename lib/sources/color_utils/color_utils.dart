@@ -2,7 +2,7 @@ import 'dart:ui';
 
 class ColorUtils {
   ColorUtils._();
-  static Color fromHex(String hexString, [Color defaultValue]) {
+  static Color? fromHex(String hexString, [Color? defaultValue]) {
     try {
       final buffer = StringBuffer();
       if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
