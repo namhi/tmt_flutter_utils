@@ -87,6 +87,8 @@ extension StringExtensions on String {
       ? diacritic.removeDiacritics(this.toLowerCase())
       : diacritic.removeDiacritics(this);
 
+  /// Remove diacritics character on string
+  /// Example: Đây là Tiếng Việt -> "Day la Tieng Viet"
   String removeDiacritics([bool toLower = false]) {
     String key = toLower ? this.toLowerCase() : this;
     return diacritic.removeDiacritics(key);
@@ -96,7 +98,8 @@ extension StringExtensions on String {
     return ui.Color(int.parse(this));
   }
 
-  /// Split a string into many chunks by chunkSIze
+  /// Split a string into many chunks by chunkSize
+  /// Example: 'abcdefghijk' -> [abcd, efgh, ijk] if chunkSize = 4
   List<String> chunk(int chunkSize) {
     return StringUtils.chunk(this, chunkSize);
   }
@@ -117,6 +120,8 @@ extension StringExtensions on String {
   String? trimUnicode(int startAt, [String prefix = '...']) =>
       StringUtils.trimUnicode(this, startAt, prefix);
 
+  /// Extract the first phone number string on [this] string.
+  /// Default it replace 'o'=> '0"
   String? extractPhoneNumber(
           [Map<String, String> replace = const {"o": "0"}]) =>
       StringUtils.extractPhoneNumber(this, replace);
@@ -125,19 +130,21 @@ extension StringExtensions on String {
     return jsonDecode(this, reviver: reviver);
   }
 
-  int? toInt({int radix = 10}) {
+  /// Cast a number string to [int];
+  int toInt({int radix = 10}) {
     try {
       return int.parse(this, radix: radix);
     } catch (e) {
-      return null;
+      throw ArgumentError('This string is not a int number');
     }
   }
 
-  double? toDouble() {
+  /// Cast a number string to [double]
+  double toDouble() {
     try {
       return double.parse(this);
     } catch (error) {
-      return null;
+      throw ArgumentError('This string is not a double number');
     }
   }
 }
