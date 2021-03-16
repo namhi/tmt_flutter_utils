@@ -16,6 +16,11 @@ import 'package:tmt_flutter_untils/sources/string_utils/string_utils.dart';
 
 import '../constant.dart';
 
+extension StringExtensionsEx on String? {
+  bool get isNullOrEmpty => this == null || this != '';
+  bool get isNotNullOrEmpty => this != null && this != '';
+}
+
 extension StringExtensions on String {
   bool isBool() => StringUtils.isBool(this);
   bool isNull() => StringUtils.isNull(this);
@@ -27,8 +32,10 @@ extension StringExtensions on String {
   bool isUpperCase() => StringUtils.isUpperCase(this);
   bool isAscii() => StringUtils.isAscii(this);
 
-  bool isNotNullOrEmpty() => this != null && this.isNotEmpty;
-  bool isNullOrEmpty() => this == null || this.isEmpty;
+  @Deprecated('When enable null safety')
+  bool isNotNullOrEmpty() => this.isNotEmpty;
+  @Deprecated('When enable null safety')
+  bool isNullOrEmpty() => this.isEmpty;
   bool isEmail() => RegExp(emailPattern).hasMatch(this);
   bool isUrl() => RegExp(urlPattern).hasMatch(this);
 
