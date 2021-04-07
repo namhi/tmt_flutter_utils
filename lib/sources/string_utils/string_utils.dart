@@ -134,8 +134,9 @@ class StringUtils {
       }
     }
 
-    final String result =
-        RegExp(phoneNumberPattern).firstMatch(s)?.group(1) ?? "";
+    final String? result =
+        RegExp(phoneNumberPattern).firstMatch(s)?.group(1) ?? null;
+        return result;
   }
 
   static bool isBool(String value) {
