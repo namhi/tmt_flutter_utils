@@ -17,4 +17,33 @@ void main() {
     final String? result = StringUtils.extractEmail(s);
     expect(result, null);
   });
+
+  // Case 1. String is contain valid phone number
+  test('Test extractPhoneNumber when String contain valid phone number', () {
+    String s = 'Toi ne 0908075455';
+    final String? result = StringUtils.extractPhoneNumber(s);
+    expect(result, '0908075455');
+  });
+  // Case 1. String is phonenumber
+  test('Test extractPhoneNumber when String contain valid phone number', () {
+    String s = '0908075455';
+    final String? result = StringUtils.extractPhoneNumber(s);
+    expect(result, '0908075455');
+  });
+
+  test(
+      'Test extractPhoneNumber return null when String is not contain valid phone number',
+      () {
+    String s = 'This string is not contain phone number';
+    final String? result = StringUtils.extractPhoneNumber(s);
+    expect(result, null);
+  });
+
+  test(
+      'Test extractPhoneNumber return null when String is contain a not valid phone number',
+      () {
+    String s = 'This string is not contain phone number 090807545';
+    final String? result = StringUtils.extractPhoneNumber(s);
+    expect(result, null);
+  });
 }
