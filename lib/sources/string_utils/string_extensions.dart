@@ -17,7 +17,7 @@ import 'package:tmt_flutter_untils/sources/string_utils/string_utils.dart';
 import '../constant.dart';
 
 extension StringNullExtensionsEx on String? {
-  bool get isNullOrEmpty => this == null || this != '';
+  bool get isNullOrEmpty => this == null || this!.isEmpty;
   bool get isNotNullOrEmpty => this != null && this != '';
   bool isNull() => StringUtils.isNull(this);
 }
