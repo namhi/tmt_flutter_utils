@@ -46,4 +46,29 @@ void main() {
     final String? result = StringUtils.extractPhoneNumber(s);
     expect(result, null);
   });
+
+  test('Test convert String to number by LanguageCode', () {
+    List<_ValueResult> _data = [
+      _ValueResult(value: '12345', result: 12345),
+      _ValueResult(value: '12345.6', result: 12345.6),
+      _ValueResult(value: '12345,6', result: 12345.6),
+      _ValueResult(value: '12.345,6', result: 12345.6),
+      _ValueResult(value: '12,345.6', result: 12345.6),
+    ];
+
+    for (final itm in _data) {
+      final result = StringUtils.tryToNum(
+        itm.value,
+        separate: '.',
+        decimalPlace: ',',
+      );
+      print(result);
+    }
+  });
+}
+
+class _ValueResult {
+  _ValueResult({required this.value, required this.result});
+  String value;
+  num result;
 }

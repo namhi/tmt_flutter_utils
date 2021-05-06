@@ -135,6 +135,8 @@ extension StringExtensions on String {
     }
   }
 
+  num? tryToNum() => StringUtils.tryToNum(this);
+
   /// Cast a number string to [double]
   double toDouble() {
     try {

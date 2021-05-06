@@ -173,4 +173,12 @@ class StringUtils {
     // }
     return RegExp(r'^\d+$').hasMatch(value);
   }
+
+  static num? tryToNum(String value, {separate = ',', decimalPlace = '.'}) {
+    List<String> separateIsDotLanguages = ['vi'];
+    List<String> separateIsCommaLanguage = ['en'];
+
+    String temp = value.replaceAll(separate, '');
+    return num.tryParse(temp);
+  }
 }
