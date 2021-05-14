@@ -179,6 +179,7 @@ class StringUtils {
     List<String> separateIsCommaLanguage = ['en'];
 
     String temp = value.replaceAll(separate, '');
+    temp = temp.replaceAll(decimalPlace, '.');
     return num.tryParse(temp);
   }
 }
