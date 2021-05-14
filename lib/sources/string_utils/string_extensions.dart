@@ -135,7 +135,9 @@ extension StringExtensions on String {
     }
   }
 
-  num? tryToNum() => StringUtils.tryToNum(this);
+  num? tryToNum({separate = ',', decimalPlace = '.'}) =>
+      StringUtils.tryToNum(this,
+          separate: separate, decimalPlace: decimalPlace);
 
   /// Cast a number string to [double]
   double toDouble() {
