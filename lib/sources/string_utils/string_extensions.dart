@@ -9,6 +9,7 @@
 import 'dart:convert';
 import 'dart:ui' as ui;
 import 'package:collection/collection.dart' show IterableExtension;
+import 'package:flutter/material.dart';
 import 'package:tmt_flutter_untils/sources/regex_pattern.dart';
 import 'package:crypto/crypto.dart';
 import 'package:diacritic/diacritic.dart' as diacritic;
@@ -20,6 +21,8 @@ extension StringNullExtensionsEx on String? {
   bool get isNullOrEmpty => this == null || this!.isEmpty;
   bool get isNotNullOrEmpty => this != null && this != '';
   bool isNull() => StringUtils.isNull(this);
+  String valueIfNullOrEmpty(String nullValue) =>
+      StringUtils.stringIfNullOrEmpty(this, nullValue);
 }
 
 extension StringExtensions on String {
@@ -122,6 +125,14 @@ extension StringExtensions on String {
           [Map<String, String> replace = const {"o": "0"}]) =>
       StringUtils.extractPhoneNumber(this, replace);
 
+  String? getFirstPhoneNumber(
+          {Map<String, String>? replace, String? pattern}) =>
+      StringUtils.getPhoneNumberFromText(
+        this,
+        pattern: pattern,
+        replace: replace,
+      );
+
   dynamic parseJson({Object reviver(Object? key, Object? value)?}) {
     return jsonDecode(this, reviver: reviver);
   }
@@ -147,4 +158,7 @@ extension StringExtensions on String {
       throw ArgumentError('This string is not a double number');
     }
   }
+
+  String valueIfNullOrEmpty(String nullValue) =>
+      StringUtils.stringIfNullOrEmpty(this, nullValue);
 }

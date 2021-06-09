@@ -137,6 +137,26 @@ class StringUtils {
     return RegExp(phoneNumberPattern).firstMatch(s)?.group(1) ?? null;
   }
 
+  /// Get the first phone number from text [s] base on Regex [pattern].
+  /// try to replace character from [replace] before try to regex
+  ///
+  /// If [pattern] is null. The default pattern is use.
+  static String? getPhoneNumberFromText(
+    String s, {
+    Map<String, String>? replace,
+    String? pattern,
+  }) {
+    String input = s;
+    if (replace != null && replace.isNotEmpty) {
+      for (var itm in replace.keys) {
+        input = input.replaceAll(itm, replace[itm]!);
+      }
+    }
+
+    return RegExp(pattern ?? phoneNumberPattern).firstMatch(s)?.group(1) ??
+        null;
+  }
+
   static bool isBool(String value) {
     // if (value == null) {
     //   return false;
@@ -181,5 +201,13 @@ class StringUtils {
     String temp = value.replaceAll(separate, '');
     temp = temp.replaceAll(decimalPlace, '.');
     return num.tryParse(temp);
+  }
+
+  /// Return input if [input] is not null or empty, return [nullValue] if [input] is null
+  static stringIfNullOrEmpty(String? input, String nullValue) {
+    if (input != null && input.isNotEmpty) {
+      return input;
+    }
+    return nullValue;
   }
 }
