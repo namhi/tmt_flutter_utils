@@ -153,7 +153,10 @@ class StringUtils {
       }
     }
 
-    return RegExp(pattern ?? phoneNumberPattern).firstMatch(s)?.group(1) ??
+    return RegExp(pattern ?? phoneNumberPattern)
+            .firstMatch(s)
+            ?.group(1)
+            ?.trim() ??
         null;
   }
 
