@@ -4,6 +4,8 @@ version: 1.0.0-nullsafety.6
 author: Nguyễn Văn Nam
 homepage: tmtsofts.com
 
+publish_to: none
+
 environment:
   sdk: '>=2.12.0 <3.0.0'
 
