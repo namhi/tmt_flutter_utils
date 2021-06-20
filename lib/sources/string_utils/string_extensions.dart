@@ -170,4 +170,7 @@ extension StringExtensions on String {
   /// ```
   String repeat(int n, [String separator = '']) =>
       StringUtils.repeat(this, n, separator);
+
+  /// using [jsonDecode] to convert Json String to Map<String,dynamic>
+  Map<String, dynamic> toMap() => jsonDecode(this);
 }
