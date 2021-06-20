@@ -161,4 +161,13 @@ extension StringExtensions on String {
 
   String valueIfNullOrEmpty(String nullValue) =>
       StringUtils.stringIfNullOrEmpty(this, nullValue);
+
+  /// Repeat string [input] [n] times with [separator]
+  ///
+  /// Example:
+  /// ```dart
+  /// print('hello', 3, ':'); // hello:hello:hello
+  /// ```
+  String repeat(int n, [String separator = '']) =>
+      StringUtils.repeat(this, n, separator);
 }

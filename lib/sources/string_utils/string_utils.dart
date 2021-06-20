@@ -213,4 +213,27 @@ class StringUtils {
     }
     return nullValue;
   }
+
+  /// Repeat string [input] [n] times with [separator]
+  ///
+  /// Example:
+  /// ```dart
+  /// print(StringUtils.repeat('hello', 3, ':')); // hello:hello:hello
+  /// ```
+  static String repeat(String input, int n, [String separator = '']) {
+    if (n < 1) {
+      throw ArgumentError('The value of n must greater than 0');
+    }
+
+    String output = '';
+    if (n == 1) {
+      return input;
+    }
+
+    for (int i = 1; i <= n; i++) {
+      output += separator + input;
+    }
+
+    return output;
+  }
 }
