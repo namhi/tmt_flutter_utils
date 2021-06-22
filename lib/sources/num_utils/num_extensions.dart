@@ -1,8 +1,5 @@
 import 'package:intl/intl.dart';
 
-const _vietnameseCurrencyFormat = '###,###,###,###,###';
-const _englishCurrencyFormat = '###,###,###,###.##';
-
 extension NumExtensions on num {
   String toStringFormat(String? format, {String? locate}) {
     if (format == null) {

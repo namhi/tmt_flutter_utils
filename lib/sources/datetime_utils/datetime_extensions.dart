@@ -6,7 +6,6 @@ import 'package:timeago/timeago.dart' as timeAgo;
 
 extension DateTimeExtensions on DateTime {
   String toDayOfWeek(String locate) {
-    var dayOfWeek = this.weekday;
     String dayOfWeekString = "";
     switch (this.weekday) {
       case 1:

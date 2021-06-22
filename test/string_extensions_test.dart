@@ -34,10 +34,7 @@ void main() {
         final String result =
             entry.number!.toStringFormat(entry.format, locate: entry.locate);
         expect(result, entry.trueValue);
-      } else {
-        final String result =
-            entry.number!.toStringFormat(entry.format, locate: entry.locate);
-      }
+      } else {}
     }
   });
 

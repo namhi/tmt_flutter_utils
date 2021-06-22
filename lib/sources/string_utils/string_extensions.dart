@@ -9,8 +9,6 @@
 import 'dart:convert';
 import 'dart:ui' as ui;
 import 'package:collection/collection.dart' show IterableExtension;
-import 'package:flutter/material.dart';
-import 'package:tmt_flutter_untils/sources/regex_pattern.dart';
 import 'package:crypto/crypto.dart';
 import 'package:diacritic/diacritic.dart' as diacritic;
 import 'package:tmt_flutter_untils/sources/string_utils/string_utils.dart';

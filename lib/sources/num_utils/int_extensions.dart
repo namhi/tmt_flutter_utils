@@ -8,6 +8,7 @@ extension IntExtensions on int {
   }
 
   int getValueOrDefault([int defaultValue = 0]) {
+    // ignore: unnecessary_null_comparison
     if (this == null) {
       return defaultValue;
     }

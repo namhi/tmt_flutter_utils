@@ -11,7 +11,6 @@ import 'dart:convert';
 import 'package:diacritic/diacritic.dart';
 
 import '../constant.dart';
-import '../regex_pattern.dart';
 
 class StringUtils {
   StringUtils._();
@@ -198,9 +197,6 @@ class StringUtils {
   }
 
   static num? tryToNum(String value, {separate = ',', decimalPlace = '.'}) {
-    List<String> separateIsDotLanguages = ['vi'];
-    List<String> separateIsCommaLanguage = ['en'];
-
     String temp = value.replaceAll(separate, '');
     temp = temp.replaceAll(decimalPlace, '.');
     return num.tryParse(temp);
