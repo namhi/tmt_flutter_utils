@@ -41,4 +41,26 @@ extension ContextExtensions on BuildContext {
     }
     return mobile;
   }
+
+  /// Return widget of T base on current Platform is [ios], [android]. All other
+  /// return [other] if param is not null, other wise return android.
+  T? responsivePlatform<T>({T? ios, T? android, required T other}) {
+    if (Platform.isIOS && ios != null) {
+      return ios;
+    }
+    if (Platform.isAndroid && android != null) {
+      return android;
+    }
+    if (other != null) {
+      return other;
+    } else {
+      return android;
+    }
+  }
+
+  /// Call FocusScope.of(context).requestFocus(FocusNode()) to close a keyboard
+  void closeKeyboard() {
+    final scope = FocusScope.of(this);
+    scope.requestFocus(FocusNode());
+  }
 }
