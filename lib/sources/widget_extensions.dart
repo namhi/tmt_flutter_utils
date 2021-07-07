@@ -13,11 +13,33 @@ extension WidgetExtensions on Widget {
     }
     return Padding(
       key: key,
-      padding:
-          EdgeInsets.only(left: left!, top: top!, right: right!, bottom: bottom!),
+      padding: EdgeInsets.only(
+          left: left!, top: top!, right: right!, bottom: bottom!),
       child: this,
     );
   }
 
   Widget sliverToBox({Key? key}) => SliverToBoxAdapter(child: this, key: key);
+}
+
+extension TextEditingControllerEx on TextEditingController {
+  /// Select all text from textfield.
+  void selectAll() {
+    this.selection = TextSelection.collapsed(offset: this.text.length);
+  }
+
+  /// Select text from TextField with TextSelection.
+  void select({
+    required int baseOffset,
+    required int extentOffset,
+    TextAffinity affinity = TextAffinity.downstream,
+    bool isDirectional = false,
+  }) {
+    this.selection = TextSelection(
+      baseOffset: baseOffset,
+      extentOffset: extentOffset,
+      affinity: affinity,
+      isDirectional: isDirectional,
+    );
+  }
 }
