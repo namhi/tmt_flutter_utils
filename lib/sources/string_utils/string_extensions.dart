@@ -78,7 +78,15 @@ extension StringExtensions on String {
     return message;
   }
 
-  DateTime toDateTime() => DateTime.parse(this);
+  /// Return [DateTime] value from String, try set [toLocal] =true if you want.
+  DateTime toDateTime({bool toLocal = false}) {
+    final result = DateTime.parse(this);
+    if (toLocal) {
+      return result.toLocal();
+    } else {
+      return result;
+    }
+  }
 
   String removeVietnameseMark({bool toLower = false}) => toLower
       ? diacritic.removeDiacritics(this.toLowerCase())
