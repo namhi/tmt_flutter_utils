@@ -25,7 +25,8 @@ extension WidgetExtensions on Widget {
 extension TextEditingControllerEx on TextEditingController {
   /// Select all text from textfield.
   void selectAll() {
-    this.selection = TextSelection.collapsed(offset: this.text.length);
+    this.selection =
+        TextSelection(baseOffset: 0, extentOffset: this.text.length);
   }
 
   /// Select text from TextField with TextSelection.
