@@ -11,9 +11,9 @@ import 'dart:ui' as ui;
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:crypto/crypto.dart';
 import 'package:diacritic/diacritic.dart' as diacritic;
-import 'package:tmt_flutter_untils/sources/string_utils/string_utils.dart';
 
 import '../constant.dart';
+import 'string_utils.dart';
 
 extension StringNullExtensionsEx on String? {
   bool get isNullOrEmpty => this == null || this!.isEmpty;

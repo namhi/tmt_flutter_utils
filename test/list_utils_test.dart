@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tmt_flutter_untils/sources/collection_util/collection_utils.dart';
+import 'package:tmt_flutter_utils/sources/collection_util/collection_utils.dart';
+import 'package:tmt_flutter_utils/tmt_flutter_utils.dart';
 
 class TestObject {
   TestObject({required this.value, required this.name});

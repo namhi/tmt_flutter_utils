@@ -1,4 +1,4 @@
-import 'package:tmt_flutter_untils/sources/collection_util/collection_utils.dart';
+import 'collection_utils.dart';
 
 extension CollectionExtensions on List {
   void replace(item, int index) {
