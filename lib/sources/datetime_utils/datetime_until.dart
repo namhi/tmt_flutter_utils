@@ -1,4 +1,4 @@
-library tmt_flutter_untils;
+library tmt_flutter_utils;
 
 import 'package:flutter/material.dart' as material;
 import 'package:intl/intl.dart';
