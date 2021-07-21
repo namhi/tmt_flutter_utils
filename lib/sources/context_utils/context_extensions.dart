@@ -60,7 +60,10 @@ extension ContextExtensions on BuildContext {
 
   /// Call FocusScope.of(context).requestFocus(FocusNode()) to close a keyboard
   void closeKeyboard() {
-    final scope = FocusScope.of(this);
-    scope.requestFocus(FocusNode());
+    unfocus();
+  }
+
+  void unfocus() {
+    FocusScope.of(this).unfocus();
   }
 }
