@@ -179,4 +179,6 @@ extension StringExtensions on String {
 
   /// using [jsonDecode] to convert Json String to Map<String,dynamic>
   Map<String, dynamic> toMap() => jsonDecode(this);
+
+  String getInitials() => StringUtils.getInitials(string: this);
 }

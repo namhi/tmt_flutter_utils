@@ -232,4 +232,17 @@ class StringUtils {
 
     return output;
   }
+
+  /// Get the first character String on each word in Strings.
+  ///
+  /// Ex: The blue sky => Tbs
+  static String getInitials({required String string, int? limitTo}) {
+    final buffer = StringBuffer();
+    final split = string.split(' ');
+    for (var i = 0; i < (limitTo ?? split.length); i++) {
+      buffer.write(split[i][0]);
+    }
+
+    return buffer.toString();
+  }
 }
