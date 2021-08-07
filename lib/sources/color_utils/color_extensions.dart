@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 extension ColorExtensions on Color {
+  /// Get color is invert of input color.
   Color textColor() {
     int d = 0;
 
