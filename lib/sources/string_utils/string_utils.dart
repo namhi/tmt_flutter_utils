@@ -14,6 +14,7 @@ import '../constant.dart';
 
 class StringUtils {
   StringUtils._();
+
   static bool isAscii(String s) {
     try {
       ascii.decode(s.codeUnits);
@@ -81,6 +82,7 @@ class StringUtils {
 
   static bool isIPv4(String s) =>
       RegExp(r'^(?:(?:^|\.)(?:2(?:5[0-5]|[0-4]\d)|1?\d?\d)){4}$').hasMatch(s);
+
   static bool isIPv6(String s) => RegExp(
           r'^((([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}:[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){5}:([0-9A-Fa-f]{1,4}:)?[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){4}:([0-9A-Fa-f]{1,4}:){0,2}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){3}:([0-9A-Fa-f]{1,4}:){0,3}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){2}:([0-9A-Fa-f]{1,4}:){0,4}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(([0-9A-Fa-f]{1,4}:){0,5}:((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(::([0-9A-Fa-f]{1,4}:){0,5}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|([0-9A-Fa-f]{1,4}::([0-9A-Fa-f]{1,4}:){0,5}[0-9A-Fa-f]{1,4})|(::([0-9A-Fa-f]{1,4}:){0,6}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){1,7}:))$')
       .hasMatch(s);
@@ -151,9 +153,8 @@ class StringUtils {
         input = input.replaceAll(itm, replace[itm]!);
       }
     }
-
     return RegExp(pattern ?? phoneNumberPattern)
-            .firstMatch(s)
+            .firstMatch(input)
             ?.group(1)
             ?.trim() ??
         null;
@@ -189,6 +190,7 @@ class StringUtils {
   }
 
   static bool isNull(dynamic value) => value == null;
+
   static bool isNumericOnly(String value) {
     // if (value == null) {
     //   return false;
