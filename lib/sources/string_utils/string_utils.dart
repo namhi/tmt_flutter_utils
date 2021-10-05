@@ -152,19 +152,9 @@ class StringUtils {
       for (var itm in replace.keys) {
         input = input.replaceAll(itm, replace[itm]!);
       }
-    } else {
-      Map<String, String> replaceMap = {
-        '.': '',
-        ',': '',
-        ' ': '',
-      };
-      for (var itm in replaceMap.keys) {
-        s = s.replaceAll(itm, replaceMap[itm]!);
-      }
     }
-
     return RegExp(pattern ?? phoneNumberPattern)
-            .firstMatch(s)
+            .firstMatch(input)
             ?.group(1)
             ?.trim() ??
         null;
