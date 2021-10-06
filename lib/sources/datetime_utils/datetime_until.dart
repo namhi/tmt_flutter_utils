@@ -185,4 +185,16 @@ class DateUtils {
     return DateTime(current.year, current.month, current.day, timeOfDay.hour,
         timeOfDay.minute, current.second);
   }
+
+  static DateTime addDaysToDateTime(DateTime source, int days) {
+    return source.add(Duration(days: days));
+  }
+
+  static DateTime addHoursToDateTime(DateTime source, int hours) {
+    return source.add(Duration(days: hours));
+  }
+
+  static DateTime addMinutesToDateTime(DateTime source, int minutes) {
+    return source.add(Duration(days: minutes));
+  }
 }

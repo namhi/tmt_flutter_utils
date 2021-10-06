@@ -124,4 +124,29 @@ extension DateTimeExtensions on DateTime {
   DateTime setLastDay() {
     return DateTime(year, month, day, 23, 59, 59, 999);
   }
+
+  /// Returns a [DateTime] with the added number of days and time set to
+  /// midnight.
+  DateTime addDaysToDate(int days) =>
+      material.DateUtils.addDaysToDate(this, days);
+
+  /// Returns a [DateTime] with the added number of days.
+  DateTime addDays(int days) => DateUtils.addDaysToDateTime(this, days);
+
+  /// Returns a [DateTime] with the added number of hours.
+  DateTime addHours(int hours) => DateUtils.addHoursToDateTime(this, hours);
+
+  /// Returns a [DateTime] with the added number of minutes.
+  DateTime addMinutes(int minutes) =>
+      DateUtils.addMinutesToDateTime(this, minutes);
+
+  /// Returns true if the two [DateTime] objects have the same day, month, and
+  /// year, or are both null.
+  bool isSameDayWith(DateTime dateB) =>
+      material.DateUtils.isSameDay(this, dateB);
+
+  /// Returns true if the two [DateTime] objects have the same month and
+  /// year, or are both null.
+  bool isSameMonthWith(DateTime dateB) =>
+      material.DateUtils.isSameMonth(this, dateB);
 }
