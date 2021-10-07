@@ -21,6 +21,8 @@ extension StringNullExtensionsEx on String? {
   bool isNull() => StringUtils.isNull(this);
   String valueIfNullOrEmpty(String nullValue) =>
       StringUtils.stringIfNullOrEmpty(this, nullValue);
+
+  String get valueOrEmpty => this != null ? this! : '';
 }
 
 extension StringExtensions on String {
@@ -180,5 +182,8 @@ extension StringExtensions on String {
   /// using [jsonDecode] to convert Json String to Map<String,dynamic>
   Map<String, dynamic> toMap() => jsonDecode(this);
 
+  /// Get the first character String on each word in Strings.
+  ///
+  /// Ex: The blue sky => Tbs
   String getInitials() => StringUtils.getInitials(string: this);
 }

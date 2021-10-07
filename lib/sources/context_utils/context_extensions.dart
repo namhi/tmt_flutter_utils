@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -63,7 +64,28 @@ extension ContextExtensions on BuildContext {
     unfocus();
   }
 
+  /// Un focus all field on screen.
   void unfocus() {
     FocusScope.of(this).unfocus();
   }
+
+  void pop<T extends Object?>([T? result]) {
+    if (Navigator.of(this).canPop()) {
+      Navigator.of(this).pop<T>(result);
+    }
+  }
+
+  Future<T?> materialPush<T extends Object?>(Widget page) async =>
+      await Navigator.of(this).push<T>(
+        MaterialPageRoute<T>(
+          builder: (context) => page,
+        ),
+      );
+
+  Future<T?> pushNamed<T extends Object?>(String routeName,
+          [Object? arguments]) =>
+      Navigator.of(this).pushNamed<T>(
+        routeName,
+        arguments: arguments,
+      );
 }

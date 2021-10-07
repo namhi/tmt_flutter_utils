@@ -19,4 +19,9 @@ extension BoolExtensionNullable on bool? {
 
     return this == true ? trueValue : falseValue;
   }
+
+  /// Get value or default value of bool type.
+  /// Default value is false
+  bool valueOrDefault([bool defaultValue = false]) =>
+      this != null ? this! : defaultValue;
 }
