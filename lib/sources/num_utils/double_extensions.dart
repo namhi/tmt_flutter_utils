@@ -1,5 +1,5 @@
-extension DoubleExtensions on double {
-  double getValueOrDefault([double defaultValue = 0.0]) {
-    return this;
+extension DoubleExtensions on double? {
+  double valueOrDefault([double defaultValue = 0.0]) {
+    return this ?? defaultValue;
   }
 }

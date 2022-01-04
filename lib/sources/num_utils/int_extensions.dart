@@ -7,14 +7,6 @@ extension IntExtensions on int {
     return Color(this);
   }
 
-  int getValueOrDefault([int defaultValue = 0]) {
-    // ignore: unnecessary_null_comparison
-    if (this == null) {
-      return defaultValue;
-    }
-    return this;
-  }
-
   Duration get hour => Duration(hours: this);
   Duration get minute => Duration(minutes: this);
   Duration get second => Duration(seconds: this);
@@ -27,5 +19,11 @@ extension IntExtensions on int {
     return (this / pow(1024, multiple)).toStringAsFixed(fractionDigits) +
         ' ' +
         ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'][multiple];
+  }
+}
+
+extension IntNullEx on int? {
+  int valueOrDefault([int defaultValue = 0]) {
+    return this ?? defaultValue;
   }
 }
