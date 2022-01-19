@@ -50,7 +50,7 @@ void main() {
 
     for (final String itm in testValues.keys) {
       print('test $itm');
-      bool result = itm.isPhoneNumber();
+      bool result = itm.isPhoneNumber;
       expect(result, testValues[itm]);
     }
   });

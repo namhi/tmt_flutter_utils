@@ -26,38 +26,40 @@ extension StringNullExtensionsEx on String? {
 }
 
 extension StringExtensions on String {
-  bool isBool() => StringUtils.isBool(this);
+  bool get isBool => StringUtils.isBool(this);
 
-  bool isNumber() => StringUtils.isNumber(this);
-  bool isInt() => StringUtils.isInt(this);
-  bool isDouble() => StringUtils.isDouble(this);
-  bool isNumericOnly() => StringUtils.isNumericOnly(this);
-  bool isLowerCase() => StringUtils.isLowerCase(this);
-  bool isUpperCase() => StringUtils.isUpperCase(this);
-  bool isAscii() => StringUtils.isAscii(this);
-  bool isEmail() => RegExp(emailPattern).hasMatch(this);
-  bool isUrl() => RegExp(urlPattern).hasMatch(this);
-
-  /// Extract first email from string.
-  /// Return null value if string not has an email.
-  /// Throw a exception if the input string is null.
-  String? extractEmail() => StringUtils.extractEmail(this);
+  bool get isNumber => StringUtils.isNumber(this);
+  bool get isInt => StringUtils.isInt(this);
+  bool get isDouble => StringUtils.isDouble(this);
+  bool get isNumericOnly => StringUtils.isNumericOnly(this);
+  bool get isLowerCase => StringUtils.isLowerCase(this);
+  bool get isUpperCase => StringUtils.isUpperCase(this);
+  bool get isAscii => StringUtils.isAscii(this);
+  bool get isEmail => RegExp(emailPattern).hasMatch(this);
+  bool get isUrl => RegExp(urlPattern).hasMatch(this);
+  bool get isCapitalized => this.isNotEmpty && this[0].isUpperCase;
 
   /// Whether a string is contain a email.
   /// throw a exception if the input string is null.
   bool get isContainEmail => StringUtils.isContainEmail(this);
 
   /// Indicates whether a string is a phone number or not.
-  bool isPhoneNumber() => RegExp(phoneNumberPattern).hasMatch(this);
+  bool get isPhoneNumber => RegExp(phoneNumberPattern).hasMatch(this);
 
   /// Indicates whether a string is encrypted of base64 format.d
-  bool isBase64() => RegExp(base64Pattern).hasMatch(this);
+  bool get isBase64 => RegExp(base64Pattern).hasMatch(this);
 
   /// Indicates whether a string is ipv4 format or not.
-  bool isIpv4() => StringUtils.isIPv4(this);
+  bool get isIpv4 => StringUtils.isIPv4(this);
 
   /// Indicates whether a string is ipv6 format or not.
-  bool isIpv6() => StringUtils.isIPv6(this);
+  bool get isIpv6 => StringUtils.isIPv6(this);
+
+  /// Extract first email from string.
+  /// Return null value if string not has an email.
+  /// Throw a exception if the input string is null.
+  String? extractEmail() => StringUtils.extractEmail(this);
+
   T? toEnum<T>(Iterable<T> values) {
     return values.firstWhereOrNull((f) => f.toString().split('.').last == this);
   }
@@ -186,4 +188,11 @@ extension StringExtensions on String {
   ///
   /// Ex: The blue sky => Tbs
   String getInitials() => StringUtils.getInitials(string: this);
+
+  /// Returns a copy of this string and make the first letter uppercase
+  ///
+  /// * "công ty quảng cáo" -> "Công ty quảng cáo"
+  /// * "CÔNG TY QUẢNG CÁO" -> "Công ty quảng cáo"'
+  String capitalize([bool allWord = false]) =>
+      StringUtils.capitalize(this, allWords: allWord);
 }
