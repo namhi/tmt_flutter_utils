@@ -2,6 +2,7 @@ import 'dart:io';
 
 class InternetUtils {
   InternetUtils._();
+
   //The test to actually see if there is a connection
   static Future<bool> checkConnection({String host = 'google.com'}) async {
     bool previousConnection = false;

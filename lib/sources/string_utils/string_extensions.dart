@@ -195,4 +195,8 @@ extension StringExtensions on String {
   /// * "CÔNG TY QUẢNG CÁO" -> "Công ty quảng cáo"'
   String capitalize([bool allWord = false]) =>
       StringUtils.capitalize(this, allWords: allWord);
+
+  /// Returns true if [text] contains only emoji icon.
+  bool hasOnlyEmojis(String text, {bool ignoreWhitespace = false}) =>
+      StringUtils.hasOnlyEmojis(text, ignoreWhitespace: ignoreWhitespace);
 }
