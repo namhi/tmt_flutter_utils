@@ -65,6 +65,15 @@ void main() {
       print(result);
     }
   });
+
+  test('Get phone number from text', () {
+    final input = 'Sục nơ 39 0984017429';
+    final result = StringUtils.getPhoneNumberFromText(input,
+        pattern:
+            r'(?:\b|[^0-9])((o|0|84|\+84)(\s?)([2-9]|1[0-9])((\d|o)(\s+|\.)?){8})(?:\b|[^0-9])');
+
+    expect(result, '0984017429');
+  });
 }
 
 class _ValueResult {

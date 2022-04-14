@@ -23,6 +23,8 @@ extension StringNullExtensionsEx on String? {
       StringUtils.stringIfNullOrEmpty(this, nullValue);
 
   String get valueOrEmpty => this != null ? this! : '';
+  bool get isNullOrBlank => this == null || this == '';
+  bool get isNotNullOrBlank => this != null && this != '';
 }
 
 extension StringExtensions on String {
@@ -169,6 +171,14 @@ extension StringExtensions on String {
     }
   }
 
+  double? toDoubleOrNull() {
+    try {
+      return double.parse(this);
+    } catch (error) {
+      return null;
+    }
+  }
+
   String valueIfNullOrEmpty(String nullValue) =>
       StringUtils.stringIfNullOrEmpty(this, nullValue);
 
@@ -199,4 +209,7 @@ extension StringExtensions on String {
   /// Returns true if [text] contains only emoji icon.
   bool hasOnlyEmojis(String text, {bool ignoreWhitespace = false}) =>
       StringUtils.hasOnlyEmojis(text, ignoreWhitespace: ignoreWhitespace);
+
+  String get urlEncode => Uri.encodeFull(this);
+  String get urlDecode => Uri.decodeFull(this);
 }

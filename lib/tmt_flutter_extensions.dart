@@ -9,3 +9,4 @@ export 'sources/num_utils/int_extensions.dart';
 export 'sources/color_utils/color_extensions.dart';
 export 'sources/widget_extensions.dart';
 export 'sources/object_extensions.dart';
+export 'sources/file_extensions.dart';
