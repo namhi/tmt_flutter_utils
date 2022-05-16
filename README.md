@@ -43,14 +43,10 @@ input.isBase64
 input.isIpv4
 input.isIpv6
 
-input.extractEmail();
+
 input.encryptMd5();
 input.encodeToBase64();
 input.decodeFromBase64();
-input.removeVietnameseMark(toLower: false);
-input.removeDiacritics(toLower: false);
-input.chunk(10);
-input.hideNumber(start: 5, end: 10, replacement: '*');
 input.trimUnicode();
 input.extractPhoneNumber();
 input.parseJson();
@@ -58,11 +54,6 @@ input.toInt();
 input.toDouble();
 input.toDoubleOrNull();
 input.valueIfNullOrEmpty();
-input.repeat();
-input.urlEncode
-input.urlDecode
-input.hasOnlyEmojis;
-input.capitalize();
 
 /// Get first charactor of word.
 'The blue sky'.getInitials(); // Return 'Tbs'
@@ -70,7 +61,16 @@ input.capitalize();
 'THE TECH COMPANY'.capitalize(true): // Return 'The Tech Company
 'http://tmtco.asia'.urlEncode; // Returns 'http%3A%2F%2Ftmtco.asia'
 'http%3A%2F%2Ftmtco.asia'.urlDecode; // Return http://tmtco.asia
-
+'🧐🥳   '.hasOnlyEmojis(ignoreWhitespace:true); // Return true
+'🧐🥳   '.hasOnlyEmojis(ignoreWhitespace:false); // Return false
+'🧐🥳   some other text'.hasOnlyEmojis(); // Return false
+'hello'.reapeat(3); // hellohellohello
+'hello'.reapead(3, separator: ' ');//hello hello hello
+'0908075455'.hideNumber(start: 7, end: 10, replacement: '*'); // 090807***
+'abcdefghijk'.trunk(4); // => [abcd,efgh,ijk]
+'Đây là tiếng việt'.removeDiacritics(); // => 'Day la tieng viet'
+'Đây là tiếng VIỆT'.removeDiacritics(toLower: true); // 'day la tieng viet'
+'This strings contains email is info@tmtco.asia'.extractEmail(); // info@tmtco.asia
 ```
 ## Num
 ## Datetime
