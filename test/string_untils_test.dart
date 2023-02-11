@@ -20,15 +20,15 @@ void main() {
 
   // Case 1. String is contain valid phone number
   test('Test extractPhoneNumber when String contain valid phone number', () {
-    String s = 'Toi ne 0908075455';
+    String s = 'Toi ne 012345678';
     final String? result = StringUtils.extractPhoneNumber(s);
-    expect(result, '0908075455');
+    expect(result, '012345678');
   });
   // Case 1. String is phonenumber
   test('Test extractPhoneNumber when String contain valid phone number', () {
-    String s = '0908075455';
+    String s = '012345678';
     final String? result = StringUtils.extractPhoneNumber(s);
-    expect(result, '0908075455');
+    expect(result, '012345678');
   });
 
   test(

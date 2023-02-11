@@ -66,7 +66,7 @@ input.valueIfNullOrEmpty();
 '🧐🥳   some other text'.hasOnlyEmojis(); // Return false
 'hello'.reapeat(3); // hellohellohello
 'hello'.reapead(3, separator: ' ');//hello hello hello
-'0908075455'.hideNumber(start: 7, end: 10, replacement: '*'); // 090807***
+'012345678'.hideNumber(start: 7, end: 10, replacement: '*'); // 090807***
 'abcdefghijk'.trunk(4); // => [abcd,efgh,ijk]
 'Đây là tiếng việt'.removeDiacritics(); // => 'Day la tieng viet'
 'Đây là tiếng VIỆT'.removeDiacritics(toLower: true); // 'day la tieng viet'

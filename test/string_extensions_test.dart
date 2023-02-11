@@ -40,7 +40,7 @@ void main() {
 
   test('Test isPhoneNumber list', () {
     final Map<String, bool> testValues = {
-      '0908075455': true,
+      '012345678': true,
       '0379566994': true,
       '0903545466': true,
       '0863545466': true,
