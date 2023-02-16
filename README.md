@@ -7,8 +7,8 @@ Add this line to your pubspec.yaml
 ```dart
       tmt_flutter_utils:
         git:
-          url: https://tfs.tpos.dev/TMT01Collection/TMT%20Flutter%20Gallery/_git/tmt_flutter_utils
-          ref: 1.1.9
+          url: https://github.com/namhi/tmt_flutter_utils.git
+          ref: master
     
 ```
 
