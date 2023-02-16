@@ -70,7 +70,7 @@ input.valueIfNullOrEmpty();
 'abcdefghijk'.trunk(4); // => [abcd,efgh,ijk]
 'Đây là tiếng việt'.removeDiacritics(); // => 'Day la tieng viet'
 'Đây là tiếng VIỆT'.removeDiacritics(toLower: true); // 'day la tieng viet'
-'This strings contains email is info@tmtco.asia'.extractEmail(); // info@tmtco.asia
+'This strings contains email is info@namnv.com'.extractEmail(); // info@namnv.com
 ```
 ## Num
 ## Datetime
