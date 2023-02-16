@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
-import 'package:tmt_flutter_utils/sources/num_utils/num_utils.dart';
+import 'package:tmt_dart_utils/tmt_dart_utils.dart';
 
 void main() {
   test('Test toStringFormatWithOption() when input is int', () {

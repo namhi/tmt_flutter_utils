@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tmt_flutter_utils/sources/string_utils/string_utils.dart';
 import 'package:tmt_flutter_utils/tmt_flutter_utils.dart';
 
 void main() {

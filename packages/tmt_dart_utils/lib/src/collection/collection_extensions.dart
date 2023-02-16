@@ -2,9 +2,9 @@ import 'collection_utils.dart';
 
 extension CollectionExtensions on List {
   void replace(item, int index) {
-    if (index < this.length) {
-      this.insert(index, item);
-      this.removeAt(this.indexOf(item) + 1);
+    if (index < length) {
+      insert(index, item);
+      removeAt(indexOf(item) + 1);
     } else {
       throw ('Index Out Of Bounds');
     }
@@ -24,7 +24,7 @@ extension IterableExtension<T> on Iterable<T> {
 
   @Deprecated('Remove when update to null safety. Using length instead')
   int lengthOrDefault([int defaultValue = 0]) {
-    return this.length;
+    return length;
   }
 }
 

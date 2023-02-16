@@ -1,5 +1,6 @@
-import 'package:tmt_flutter_utils/sources/string_utils/string_extensions.dart';
-import 'package:tmt_flutter_utils/sources/string_utils/string_utils.dart';
+import 'package:tmt_dart_utils/src/string/string_extensions.dart';
+
+import '../../tmt_dart_utils.dart';
 
 class NumUtils {
   NumUtils._();

@@ -22,6 +22,8 @@ dependencies:
   diacritic: ^0.1.3
   timeago: ^3.3.0
   crypto: ^3.0.2
+  tmt_dart_utils:
+    path: packages/tmt_dart_utils
 
   flutter:
     sdk: flutter
