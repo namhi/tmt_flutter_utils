@@ -23,7 +23,9 @@ dependencies:
   timeago: ^3.3.0
   crypto: ^3.0.2
   tmt_dart_utils:
-    path: packages/tmt_dart_utils
+    git:
+      url: https://github.com/namhi/tmt_flutter_utils.git
+      path: packages/tmt_dart_utils/
 
   flutter:
     sdk: flutter
