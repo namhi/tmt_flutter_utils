@@ -70,6 +70,20 @@ class StringUtils {
     }
   }
 
+  static String camelCase(String s) {
+    final words = s.split(' ');
+    var list = [];
+    for (var w in words) {
+      if (words.indexOf(w) == 0) {
+        list.add(w.toLowerCase());
+        continue;
+      }
+      list.add(capitalize(w));
+    }
+
+    return list.join();
+  }
+
   static List<String> chunk(String s, int chunkSize) {
     var chunked = <String>[];
     for (var i = 0; i < s.length; i += chunkSize) {

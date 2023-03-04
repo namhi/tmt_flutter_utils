@@ -203,4 +203,13 @@ extension StringExtensions on String {
 
   String get urlEncode => Uri.encodeFull(this);
   String get urlDecode => Uri.decodeFull(this);
+
+  /// Returns cammel case of String.
+  String toCamelCase() {
+    return StringUtils.camelCase(this);
+  }
+
+  String toLowerFirstCharacter() {
+    return substring(0, 1).toLowerCase() + substring(1);
+  }
 }
