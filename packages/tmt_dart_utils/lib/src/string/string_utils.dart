@@ -70,18 +70,82 @@ class StringUtils {
     }
   }
 
-  static String camelCase(String s) {
-    final words = s.split(' ');
-    var list = [];
-    for (var w in words) {
-      if (words.indexOf(w) == 0) {
-        list.add(w.toLowerCase());
-        continue;
+  /// [separators]: danh sách separators để split
+  /// Example: 'How many times' -> 'howManyTimes'
+  /// Example: 'How_many times version  _2' -> 'howManyTimesVersion2'
+  static String camelCase(
+    String s, {
+    List<String> separators = const [' ', '_', '-'],
+  }) {
+    final List<String> words = splitBySeparators(s, separators: separators);
+
+    final List<String> list = [];
+    for (String w in words) {
+      if (w.isNotEmpty) {
+        if (words.indexOf(w) == 0) {
+          list.add(w.toLowerCase());
+          continue;
+        }
+        list.add(capitalize(w));
       }
-      list.add(capitalize(w));
     }
 
     return list.join();
+  }
+
+  /// [separators]: danh sách separators để split
+  /// Example: 'How many times' -> 'HowManyTimes'
+  /// Example: 'How_many times version  _2' -> 'HowManyTimesVersion2'
+  static String upperCamelCase(
+    String s, {
+    List<String> separators = const [' ', '_', '-'],
+  }) {
+    final List<String> words = splitBySeparators(s, separators: separators);
+
+    final List<String> list = [];
+    for (String w in words) {
+      if (w.isNotEmpty) {
+        list.add(capitalize(w));
+      }
+    }
+
+    return list.join();
+  }
+
+  /// [separators]: danh sách separators để split
+  /// Example: 'How many times' -> 'how_many_times'
+  /// Example: 'How_many times version  _2' -> 'how_many_times_version_2'
+  static String lowerUnderscore(
+    String s, {
+    List<String> separators = const [' ', '_', '-'],
+  }) {
+    final List<String> words = splitBySeparators(s, separators: separators);
+
+    final List<String> list = [];
+    for (String w in words) {
+      if (w.isNotEmpty) {
+        list.add(w.toLowerCase());
+      }
+    }
+
+    return list.join('_');
+  }
+
+  static List<String> splitBySeparators(
+    String s, {
+    required List<String> separators,
+  }) {
+    /// Chuyển tất cả kí tự 'separators' trong chuỗi về '_'
+    String text = s;
+    const String underscoreCharacter = '_';
+
+    for (String separator in separators) {
+      text = text.replaceAll(separator, underscoreCharacter);
+    }
+
+    final List<String> words = text.split(underscoreCharacter);
+
+    return words;
   }
 
   static List<String> chunk(String s, int chunkSize) {

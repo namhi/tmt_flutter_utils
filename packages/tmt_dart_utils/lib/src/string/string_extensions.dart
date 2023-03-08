@@ -209,6 +209,14 @@ extension StringExtensions on String {
     return StringUtils.camelCase(this);
   }
 
+  String toUpperCamelCase() {
+    return StringUtils.upperCamelCase(this);
+  }
+
+  String toLowerUnderscore() {
+    return StringUtils.lowerUnderscore(this);
+  }
+
   String toLowerFirstCharacter() {
     return substring(0, 1).toLowerCase() + substring(1);
   }
