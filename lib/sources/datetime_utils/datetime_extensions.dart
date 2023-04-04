@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' as material;
 import 'package:intl/intl.dart';
 
-import 'datetime_until.dart';
+import 'datetime_util.dart';
 import 'package:timeago/timeago.dart' as timeAgo;
 
 extension DateTimeExtensions on DateTime {
