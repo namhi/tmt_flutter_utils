@@ -28,6 +28,7 @@ class StringUtils {
     unicode: true,
   );
 
+  /// Returns true if [s] is in ascii table.
   static bool isAscii(String s) {
     try {
       ascii.decode(s.codeUnits);
@@ -266,5 +267,25 @@ class StringUtils {
     if (ignoreWhitespace) text = text.replaceAll(' ', '');
     for (final c in Characters(text)) if (!regexEmoji.hasMatch(c)) return false;
     return true;
+  }
+
+  /// Similar to [isAscii] function.
+  /// Returns true if [character] is in ascii table.
+  static bool asciiCheck(String character, bool extended) {
+    // check if [character] is multi-byte then [character] is not ascii
+    if (character.codeUnits.length > 1) {
+      return false;
+    }
+    int num = character.codeUnits.first;
+    if (num > 31 && num < 127) {
+      return true;
+    }
+    if (num == 10) {
+      return true;
+    }
+    if (extended && num > 127) {
+      return true;
+    }
+    return false;
   }
 }
