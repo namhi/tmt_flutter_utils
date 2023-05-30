@@ -191,10 +191,10 @@ class DateUtils {
   }
 
   static DateTime addHoursToDateTime(DateTime source, int hours) {
-    return source.add(Duration(days: hours));
+    return source.add(Duration(hours: hours));
   }
 
   static DateTime addMinutesToDateTime(DateTime source, int minutes) {
-    return source.add(Duration(days: minutes));
+    return source.add(Duration(minutes: minutes));
   }
 }

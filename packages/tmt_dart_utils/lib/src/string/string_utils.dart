@@ -10,25 +10,10 @@ import 'dart:convert';
 
 import 'package:diacritic/diacritic.dart';
 import '../constant.dart';
-import 'package:characters/characters.dart';
 
 class StringUtils {
   StringUtils._();
 
-  static final regexEmoji = RegExp(
-    r'[\u{1f300}-\u{1f5ff}\u{1f900}-\u{1f9ff}\u{1f600}-\u{1f64f}'
-    r'\u{1f680}-\u{1f6ff}\u{2600}-\u{26ff}\u{2700}'
-    r'-\u{27bf}\u{1f1e6}-\u{1f1ff}\u{1f191}-\u{1f251}'
-    r'\u{1f004}\u{1f0cf}\u{1f170}-\u{1f171}\u{1f17e}'
-    r'-\u{1f17f}\u{1f18e}\u{3030}\u{2b50}\u{2b55}'
-    r'\u{2934}-\u{2935}\u{2b05}-\u{2b07}\u{2b1b}'
-    r'-\u{2b1c}\u{3297}\u{3299}\u{303d}\u{00a9}'
-    r'\u{00ae}\u{2122}\u{23f3}\u{24c2}\u{23e9}'
-    r'-\u{23ef}\u{25b6}\u{23f8}-\u{23fa}\u{200d}]+',
-    unicode: true,
-  );
-
-  /// Returns true if [s] is in ascii table.
   static bool isAscii(String s) {
     try {
       ascii.decode(s.codeUnits);
@@ -83,6 +68,84 @@ class StringUtils {
     } else {
       return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
     }
+  }
+
+  /// [separators]: danh sách separators để split
+  /// Example: 'How many times' -> 'howManyTimes'
+  /// Example: 'How_many times version  _2' -> 'howManyTimesVersion2'
+  static String camelCase(
+    String s, {
+    List<String> separators = const [' ', '_', '-'],
+  }) {
+    final List<String> words = splitBySeparators(s, separators: separators);
+
+    final List<String> list = [];
+    for (String w in words) {
+      if (w.isNotEmpty) {
+        if (words.indexOf(w) == 0) {
+          list.add(w.toLowerCase());
+          continue;
+        }
+        list.add(capitalize(w));
+      }
+    }
+
+    return list.join();
+  }
+
+  /// [separators]: danh sách separators để split
+  /// Example: 'How many times' -> 'HowManyTimes'
+  /// Example: 'How_many times version  _2' -> 'HowManyTimesVersion2'
+  static String upperCamelCase(
+    String s, {
+    List<String> separators = const [' ', '_', '-'],
+  }) {
+    final List<String> words = splitBySeparators(s, separators: separators);
+
+    final List<String> list = [];
+    for (String w in words) {
+      if (w.isNotEmpty) {
+        list.add(capitalize(w));
+      }
+    }
+
+    return list.join();
+  }
+
+  /// [separators]: danh sách separators để split
+  /// Example: 'How many times' -> 'how_many_times'
+  /// Example: 'How_many times version  _2' -> 'how_many_times_version_2'
+  static String lowerUnderscore(
+    String s, {
+    List<String> separators = const [' ', '_', '-'],
+  }) {
+    final List<String> words = splitBySeparators(s, separators: separators);
+
+    final List<String> list = [];
+    for (String w in words) {
+      if (w.isNotEmpty) {
+        list.add(w.toLowerCase());
+      }
+    }
+
+    return list.join('_');
+  }
+
+  static List<String> splitBySeparators(
+    String s, {
+    required List<String> separators,
+  }) {
+    /// Chuyển tất cả kí tự 'separators' trong chuỗi về '_'
+    String text = s;
+    const String underscoreCharacter = '_';
+
+    for (String separator in separators) {
+      text = text.replaceAll(separator, underscoreCharacter);
+    }
+
+    final List<String> words = text.split(underscoreCharacter);
+
+    return words;
   }
 
   static List<String> chunk(String s, int chunkSize) {
@@ -260,32 +323,5 @@ class StringUtils {
     }
 
     return buffer.toString();
-  }
-
-  /// Returns true if [text] contains only emoji icon.
-  static bool hasOnlyEmojis(String text, {bool ignoreWhitespace = false}) {
-    if (ignoreWhitespace) text = text.replaceAll(' ', '');
-    for (final c in Characters(text)) if (!regexEmoji.hasMatch(c)) return false;
-    return true;
-  }
-
-  /// Similar to [isAscii] function.
-  /// Returns true if [character] is in ascii table.
-  static bool asciiCheck(String character, bool extended) {
-    // check if [character] is multi-byte then [character] is not ascii
-    if (character.codeUnits.length > 1) {
-      return false;
-    }
-    int num = character.codeUnits.first;
-    if (num > 31 && num < 127) {
-      return true;
-    }
-    if (num == 10) {
-      return true;
-    }
-    if (extended && num > 127) {
-      return true;
-    }
-    return false;
   }
 }

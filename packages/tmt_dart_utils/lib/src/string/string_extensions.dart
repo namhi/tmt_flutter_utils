@@ -7,7 +7,6 @@
  */
 
 import 'dart:convert';
-import 'dart:ui' as ui;
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:crypto/crypto.dart';
 import 'package:diacritic/diacritic.dart' as diacritic;
@@ -103,10 +102,6 @@ extension StringExtensions on String {
   String removeDiacritics([bool toLower = false]) {
     String key = toLower ? this.toLowerCase() : this;
     return diacritic.removeDiacritics(key);
-  }
-
-  ui.Color toColor() {
-    return ui.Color(int.parse(this));
   }
 
   /// Split a string into many chunks by chunkSize
@@ -206,10 +201,23 @@ extension StringExtensions on String {
   String capitalize([bool allWord = false]) =>
       StringUtils.capitalize(this, allWords: allWord);
 
-  /// Returns true if [text] contains only emoji icon.
-  bool hasOnlyEmojis(String text, {bool ignoreWhitespace = false}) =>
-      StringUtils.hasOnlyEmojis(text, ignoreWhitespace: ignoreWhitespace);
-
   String get urlEncode => Uri.encodeFull(this);
   String get urlDecode => Uri.decodeFull(this);
+
+  /// Returns cammel case of String.
+  String toCamelCase() {
+    return StringUtils.camelCase(this);
+  }
+
+  String toUpperCamelCase() {
+    return StringUtils.upperCamelCase(this);
+  }
+
+  String toLowerUnderscore() {
+    return StringUtils.lowerUnderscore(this);
+  }
+
+  String toLowerFirstCharacter() {
+    return substring(0, 1).toLowerCase() + substring(1);
+  }
 }
