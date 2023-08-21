@@ -118,11 +118,12 @@ extension DateTimeExtensions on DateTime {
   }
 
   DateTime clearTime() {
-    return DateTime(year, month, day, 0, 0, 0);
+    return this.copyWith(
+        hour: 0, minute: 0, second: 0, millisecond: 0, microsecond: 0);
   }
 
   DateTime setLastDay() {
-    return DateTime(year, month, day, 23, 59, 59, 999);
+    return this.copyWith(hour: 23, minute: 59, second: 59, millisecond: 999);
   }
 
   /// Returns a [DateTime] with the added number of days and time set to
