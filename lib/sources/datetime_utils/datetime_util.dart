@@ -177,13 +177,16 @@ String datetimeToStringSort(DateTime date, [DateTime? toDay]) {
 class DateUtils {
   DateUtils._internal();
   static DateTime changeDate(DateTime current, DateTime changeDate) {
-    return DateTime(changeDate.year, changeDate.month, changeDate.day,
-        current.hour, current.minute, current.second);
+    return current.copyWith(
+        year: changeDate.year, month: changeDate.month, day: changeDate.day);
   }
 
   static DateTime changeTime(DateTime current, material.TimeOfDay timeOfDay) {
-    return DateTime(current.year, current.month, current.day, timeOfDay.hour,
-        timeOfDay.minute, current.second);
+    return current.copyWith(
+        hour: timeOfDay.hour,
+        minute: timeOfDay.minute,
+        second: 0,
+        millisecond: 0);
   }
 
   static DateTime addDaysToDateTime(DateTime source, int days) {

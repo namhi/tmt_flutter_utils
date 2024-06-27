@@ -2,11 +2,12 @@ name: tmt_dart_utils
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
+publish_to: none
 
 environment:
   sdk: '>=3.0.6 <4.0.0'
 dependencies:
-  intl: any
+  intl: ^0.18.0
   diacritic: ^0.1.3
   timeago: ^3.3.0
   crypto: ^3.0.2

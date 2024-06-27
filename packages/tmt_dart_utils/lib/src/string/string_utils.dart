@@ -31,8 +31,20 @@ class StringUtils {
     return s == s.toLowerCase();
   }
 
-  static String? hideNumber(String number,
-      {required int start, int? end, required String replacement}) {
+  /// Example: hideNumber(0901000123, start: 7)
+  /// Input 0901000123 will return 0901000***
+  static String? hideNumber(
+    String number, {
+    required int start,
+    int? end,
+    required String replacement,
+  }) {
+    if (end != null && end < start) {
+      throw Exception("{end} must greater than {start}");
+    }
+    if ((end ?? start) > number.length) {
+      return number;
+    }
     return number.replaceRange(start, end, replacement);
   }
 

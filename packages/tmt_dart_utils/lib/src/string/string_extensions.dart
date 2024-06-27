@@ -112,8 +112,11 @@ extension StringExtensions on String {
 
   /// hide characters from [start] to [end] by [replacement]
   /// For example: 0908075555 -> 09****5555
-  String? hideNumber(
-      {required int start, int? end, required String replacement}) {
+  String? hideNumber({
+    required int start,
+    int? end,
+    required String replacement,
+  }) {
     return StringUtils.hideNumber(
       this,
       start: start,

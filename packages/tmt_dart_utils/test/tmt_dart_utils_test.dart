@@ -44,5 +44,11 @@ void main() {
       final result = test.toLowerUnderscore();
       expect(result != 'How_many_times_version_2', true);
     });
+
+    test('Hide Number', () {
+      const test = '0901000123';
+      final result = test.hideNumber(start: 7, replacement: '***');
+      expect(result == '0901000***', true);
+    });
   });
 }
