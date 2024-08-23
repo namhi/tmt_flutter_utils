@@ -1,6 +1,5 @@
 library tmt_flutter_utils;
 
-import 'package:flutter/material.dart' as material;
 import 'package:intl/intl.dart';
 import 'datetime_range.dart';
 import 'datetime_range_type.dart';
@@ -8,24 +7,23 @@ import 'datetime_range_type.dart';
 DateTime getFirstDateOfWeek(DateTime date) {
   final int dateOfWeek = date.weekday;
   DateTime dateResult = date.add(Duration(days: -(dateOfWeek - 1)));
-  return new DateTime(
-      dateResult.year, dateResult.month, dateResult.day, 0, 0, 0);
+  return DateTime(dateResult.year, dateResult.month, dateResult.day, 0, 0, 0);
 }
 
 DateTime getLastDateOfWeek(DateTime date) {
   final int dateOfWeek = date.weekday;
   var lastDate = date.add(Duration(days: (7 - dateOfWeek)));
-  return new DateTime(
+  return DateTime(
       lastDate.year, lastDate.month, lastDate.day, 23, 59, 59, 999, 999);
 }
 
 DateTime getFirstDateOfMonth(DateTime date) {
-  return new DateTime(date.year, date.month, 1, 0, 0, 0);
+  return DateTime(date.year, date.month, 1, 0, 0, 0);
 }
 
 DateTime getLastDateOfMonth(DateTime date) {
   var lastDate = new DateTime(date.year, date.month + 1, 0);
-  return new DateTime(
+  return DateTime(
       lastDate.year, lastDate.month, lastDate.day, 23, 59, 59, 999, 999);
 }
 
@@ -34,9 +32,8 @@ DateTimeRange getTimeRangeToday([DateTime? date]) {
   return DateTimeRange(
       name: "Hôm nay",
       type: DateTimeRangeType.DAY,
-      startDate: new DateTime(now.year, now.month, now.day, 0, 0, 0),
-      endDate:
-          new DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
+      startDate: DateTime(now.year, now.month, now.day, 0, 0, 0),
+      endDate: DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
 }
 
 DateTimeRange getTimeRangeYesterday([DateTime? date]) {
@@ -44,9 +41,9 @@ DateTimeRange getTimeRangeYesterday([DateTime? date]) {
   return DateTimeRange(
       name: "Hôm qua",
       type: DateTimeRangeType.DAY,
-      startDate: new DateTime(now.year, now.month, now.day - 1, 0, 0, 0),
+      startDate: DateTime(now.year, now.month, now.day - 1, 0, 0, 0),
       endDate:
-          new DateTime(now.year, now.month, now.day - 1, 23, 59, 59, 999, 999));
+          DateTime(now.year, now.month, now.day - 1, 23, 59, 59, 999, 999));
 }
 
 DateTimeRange getTimeRangeLast7Day([DateTime? date]) {
@@ -55,8 +52,7 @@ DateTimeRange getTimeRangeLast7Day([DateTime? date]) {
       name: "7 ngày qua",
       type: DateTimeRangeType.DAY,
       startDate: new DateTime(now.year, now.month, now.day - 6, 0, 0, 0),
-      endDate:
-          new DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
+      endDate: DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
 }
 
 DateTimeRange getTimeRangeLast28Day([DateTime? date]) {
@@ -64,9 +60,8 @@ DateTimeRange getTimeRangeLast28Day([DateTime? date]) {
   return DateTimeRange(
       name: "28 ngày qua",
       type: DateTimeRangeType.DAY,
-      startDate: new DateTime(now.year, now.month, now.day - 27, 0, 0, 0),
-      endDate:
-          new DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
+      startDate: DateTime(now.year, now.month, now.day - 27, 0, 0, 0),
+      endDate: DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
 }
 
 DateTimeRange getTimeRangeLast30Day([DateTime? date]) {
@@ -74,9 +69,8 @@ DateTimeRange getTimeRangeLast30Day([DateTime? date]) {
   return DateTimeRange(
       name: "30 ngày qua",
       type: DateTimeRangeType.DAY,
-      startDate: new DateTime(now.year, now.month, now.day - 29, 0, 0, 0),
-      endDate:
-          new DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
+      startDate: DateTime(now.year, now.month, now.day - 29, 0, 0, 0),
+      endDate: DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
 }
 
 DateTimeRange getTimeRangeLast90Day([DateTime? date]) {
@@ -84,9 +78,8 @@ DateTimeRange getTimeRangeLast90Day([DateTime? date]) {
   return DateTimeRange(
       name: "90 ngày qua",
       type: DateTimeRangeType.DAY,
-      startDate: new DateTime(now.year, now.month, now.day - 89, 0, 0, 0),
-      endDate:
-          new DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
+      startDate: DateTime(now.year, now.month, now.day - 89, 0, 0, 0),
+      endDate: DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
 }
 
 DateTimeRange getTimeRangeThisWeek([DateTime? date]) {
@@ -179,14 +172,6 @@ class DateUtils {
   static DateTime changeDate(DateTime current, DateTime changeDate) {
     return current.copyWith(
         year: changeDate.year, month: changeDate.month, day: changeDate.day);
-  }
-
-  static DateTime changeTime(DateTime current, material.TimeOfDay timeOfDay) {
-    return current.copyWith(
-        hour: timeOfDay.hour,
-        minute: timeOfDay.minute,
-        second: 0,
-        millisecond: 0);
   }
 
   static DateTime addDaysToDateTime(DateTime source, int days) {
