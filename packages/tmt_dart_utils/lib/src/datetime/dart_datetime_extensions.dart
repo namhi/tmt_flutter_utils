@@ -1,10 +1,11 @@
 import 'package:intl/intl.dart';
-import 'package:timeago/timeago.dart' as timeAgo;
+import 'package:timeago/timeago.dart' as time_ago;
+import 'package:tmt_dart_utils/tmt_dart_utils.dart';
 
 extension DartDateTimeExtensions on DateTime {
   String toDayOfWeek(String locate) {
     String dayOfWeekString = "";
-    switch (this.weekday) {
+    switch (weekday) {
       case 1:
         switch (locate) {
           case "vi-VN":
@@ -98,15 +99,25 @@ extension DartDateTimeExtensions on DateTime {
   }
 
   String toTimeAgo(String local) {
-    return timeAgo.format(this, locale: local);
+    return time_ago.format(this, locale: local);
   }
 
   DateTime clearTime() {
-    return this.copyWith(
+    return copyWith(
         hour: 0, minute: 0, second: 0, millisecond: 0, microsecond: 0);
   }
 
   DateTime setLastDay() {
-    return this.copyWith(hour: 23, minute: 59, second: 59, millisecond: 999);
+    return copyWith(hour: 23, minute: 59, second: 59, millisecond: 999);
   }
+
+  /// Returns a [DateTime] with the added number of hours.
+  DateTime addHours(int hours) => DartDateUtils.addHoursToDateTime(this, hours);
+
+  /// Returns a [DateTime] with the added number of days.
+  DateTime addDays(int days) => DartDateUtils.addDaysToDateTime(this, days);
+
+  /// Returns a [DateTime] with the added number of minutes.
+  DateTime addMinutes(int minutes) =>
+      DartDateUtils.addMinutesToDateTime(this, minutes);
 }

@@ -412,8 +412,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/tmt_dart_utils"
-      ref: HEAD
-      resolved-ref: da4fb89901f7d52c41701e1103ee282e05744382
+      ref: master
+      resolved-ref: "9c083ac033ce6f301f5ad355d7709ec12136b1ac"
       url: "https://github.com/namhi/tmt_flutter_utils.git"
     source: git
     version: "0.0.1"

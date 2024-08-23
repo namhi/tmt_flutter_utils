@@ -51,7 +51,7 @@ DateTimeRange getTimeRangeLast7Day([DateTime? date]) {
   return DateTimeRange(
       name: "7 ngày qua",
       type: DateTimeRangeType.DAY,
-      startDate: new DateTime(now.year, now.month, now.day - 6, 0, 0, 0),
+      startDate: DateTime(now.year, now.month, now.day - 6, 0, 0, 0),
       endDate: DateTime(now.year, now.month, now.day, 23, 59, 59, 999, 999));
 }
 
@@ -96,8 +96,8 @@ DateTimeRange getTimeRangeLastWeek([DateTime? date]) {
   return DateTimeRange(
       name: "Tuần trước",
       type: DateTimeRangeType.WEEK,
-      startDate: getFirstDateOfWeek(now.add(Duration(days: -7))),
-      endDate: getLastDateOfWeek(now.add(Duration(days: -7))));
+      startDate: getFirstDateOfWeek(now.add(const Duration(days: -7))),
+      endDate: getLastDateOfWeek(now.add(const Duration(days: -7))));
 }
 
 DateTimeRange getTimeRangeThisMonth([DateTime? date]) {
@@ -134,8 +134,8 @@ DateTimeRange getTimeRangeLastMonth([DateTime? date]) {
   return DateTimeRange(
       name: "Tháng trước",
       type: DateTimeRangeType.MONTH,
-      startDate: new DateTime(now.year, now.month - 1, 1, 0, 0, 0),
-      endDate: getFirstDateOfMonth(now).add(Duration(microseconds: -1)));
+      startDate: DateTime(now.year, now.month - 1, 1, 0, 0, 0),
+      endDate: getFirstDateOfMonth(now).add(const Duration(microseconds: -1)));
 }
 
 DateTimeRange getTimeRangeThisYear([DateTime? date]) {
@@ -143,8 +143,8 @@ DateTimeRange getTimeRangeThisYear([DateTime? date]) {
   return DateTimeRange(
       name: "Năm nay",
       type: DateTimeRangeType.YEAR,
-      startDate: new DateTime(now.year, 1, 1, 0, 0, 0),
-      endDate: new DateTime(now.year, 12, 31, 23, 59, 59, 999, 999));
+      startDate: DateTime(now.year, 1, 1, 0, 0, 0),
+      endDate: DateTime(now.year, 12, 31, 23, 59, 59, 999, 999));
 }
 
 DateTimeRange getTimeRangeLastYear([DateTime? date]) {
@@ -152,8 +152,8 @@ DateTimeRange getTimeRangeLastYear([DateTime? date]) {
   return DateTimeRange(
       name: "Năm trước",
       type: DateTimeRangeType.YEAR,
-      startDate: new DateTime(now.year - 1, 1, 1, 0, 0, 0),
-      endDate: new DateTime(now.year - 1, 12, 31, 23, 59, 59, 999, 999));
+      startDate: DateTime(now.year - 1, 1, 1, 0, 0, 0),
+      endDate: DateTime(now.year - 1, 12, 31, 23, 59, 59, 999, 999));
 }
 
 String datetimeToStringSort(DateTime date, [DateTime? toDay]) {
@@ -167,8 +167,8 @@ String datetimeToStringSort(DateTime date, [DateTime? toDay]) {
   }
 }
 
-class DateUtils {
-  DateUtils._internal();
+class DartDateUtils {
+  DartDateUtils._internal();
   static DateTime changeDate(DateTime current, DateTime changeDate) {
     return current.copyWith(
         year: changeDate.year, month: changeDate.month, day: changeDate.day);
