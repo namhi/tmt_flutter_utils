@@ -23,7 +23,7 @@ class ListUtils {
     var more = [];
     var pivotList = [];
 
-    list.forEach((var element) {
+    for (var element in list) {
       if (element.compareTo(pivot) < 0) {
         less.add(element);
       } else if (element.compareTo(pivot) > 0) {
@@ -31,7 +31,7 @@ class ListUtils {
       } else {
         pivotList.add(element);
       }
-    });
+    }
 
     less = quickSort(less);
     more = quickSort(more);
@@ -41,9 +41,9 @@ class ListUtils {
     return less;
   }
 
-  static List bubbleSort(List list) {
+  static List<dynamic> bubbleSort(List<dynamic> list) {
     var retList = List.from(list);
-    var tmp;
+    dynamic tmp;
     var swapped = false;
     do {
       swapped = false;

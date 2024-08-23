@@ -11,29 +11,78 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+tmt_dart_utils is a dart package with Utils class and provides some useful extension method.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add using pub
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```bash
+dart pub add tmt_dart_utils
 ```
 
-## Additional information
+Or add this line to your pubspec.yaml
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+      tmt_dart_utils: ^1.2.4
+```
+
+Import package
+
+```dart
+   import 'package:tmt_flutter_utils/tmt_flutter_utils.dart';
+```
+
+# Extension Method
+
+```dart
+String input = 'some text';
+// Returns true if string is bool value (True/False)
+input.isBool //return bool
+
+// True if
+input.isNumber // Return bool
+input.isInt // Return bool
+input.isDouble // Return bool
+input.isNumericOnly // Return bool
+input.isLowerCase // Return bool
+input.isUpperCase // Return bool
+input.isAscii // Return bool
+input.isEmail // Return bool
+input.isUrl // Return bool
+input.isCapitalized // Return bool
+input.isContainEmail
+input.isPhoneNumber
+input.isBase64
+input.isIpv4
+input.isIpv6
+
+
+input.encryptMd5();
+input.encodeToBase64();
+input.decodeFromBase64();
+input.trimUnicode();
+input.extractPhoneNumber();
+input.parseJson();
+input.toInt();
+input.toDouble();
+input.toDoubleOrNull();
+input.valueIfNullOrEmpty();
+
+
+'The blue sky'.getInitials(); // Return 'Tbs'
+'THE TECH COMPANY'.capitalize(false); // Return 'The tech company
+'THE TECH COMPANY'.capitalize(true): // Return 'The Tech Company
+'http://google.com'.urlEncode; // Returns 'http%3A%2F%2Fgoogle.com'
+'http%3A%2F%2Fgoogle.com'.urlDecode; // Return http://google.com
+'🧐🥳   '.hasOnlyEmojis(ignoreWhitespace:true); // Return true
+'🧐🥳   '.hasOnlyEmojis(ignoreWhitespace:false); // Return false
+'🧐🥳   some other text'.hasOnlyEmojis(); // Return false
+'hello'.reapeat(3); // hellohellohello
+'hello'.reapead(3, separator: ' ');//hello hello hello
+'012345678'.hideNumber(start: 7, end: 10, replacement: '*'); // 090807***
+'abcdefghijk'.trunk(4); // => [abcd,efgh,ijk]
+'Đây là tiếng việt'.removeDiacritics(); // => 'Day la tieng viet'
+'Đây là tiếng VIỆT'.removeDiacritics(toLower: true); // 'day la tieng viet'
+'This strings contains email is info@namnv.com'.extractEmail(); // info@namnv.com
+```
