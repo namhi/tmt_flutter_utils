@@ -35,7 +35,7 @@ class NumUtils {
       final decimalString =
           inputStringSplit.length > 1 ? inputStringSplit[1] : null;
 
-      return '$realStringWithThousand$decimalSeparator${decimalString != null ? decimalString : '0'.repeat(precision)}';
+      return '$realStringWithThousand$decimalSeparator${decimalString ?? '0'.repeat(precision)}';
     }
   }
 

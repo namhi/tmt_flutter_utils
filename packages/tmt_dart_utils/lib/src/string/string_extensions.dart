@@ -38,7 +38,7 @@ extension StringExtensions on String {
   bool get isAscii => StringUtils.isAscii(this);
   bool get isEmail => RegExp(emailPattern).hasMatch(this);
   bool get isUrl => RegExp(urlPattern).hasMatch(this);
-  bool get isCapitalized => this.isNotEmpty && this[0].isUpperCase;
+  bool get isCapitalized => isNotEmpty && this[0].isUpperCase;
 
   /// Whether a string is contain a email.
   /// throw a exception if the input string is null.
@@ -94,13 +94,13 @@ extension StringExtensions on String {
   }
 
   String removeVietnameseMark({bool toLower = false}) => toLower
-      ? diacritic.removeDiacritics(this.toLowerCase())
+      ? diacritic.removeDiacritics(toLowerCase())
       : diacritic.removeDiacritics(this);
 
   /// Remove diacritics character on string
   /// Example: Đây là Tiếng Việt -> "Day la Tieng Viet"
   String removeDiacritics([bool toLower = false]) {
-    String key = toLower ? this.toLowerCase() : this;
+    String key = toLower ? toLowerCase() : this;
     return diacritic.removeDiacritics(key);
   }
 
@@ -143,7 +143,7 @@ extension StringExtensions on String {
         replace: replace,
       );
 
-  dynamic parseJson({Object reviver(Object? key, Object? value)?}) {
+  dynamic parseJson({Object Function(Object? key, Object? value)? reviver}) {
     return jsonDecode(this, reviver: reviver);
   }
 

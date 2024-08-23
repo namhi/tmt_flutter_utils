@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:collection/collection.dart';
 
@@ -14,7 +13,7 @@ void main() {
     print(date2.toUtc().toIso8601String());
 
     List<Test> test = <Test>[];
-    test.sortedBy<String>((element) => element.name ?? '');
+    test.sortedBy<String>((element) => element.name);
   });
 }
 

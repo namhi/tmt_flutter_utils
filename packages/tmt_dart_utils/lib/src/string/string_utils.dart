@@ -224,7 +224,7 @@ class StringUtils {
       }
     }
 
-    return RegExp(phoneNumberPattern).firstMatch(s)?.group(1) ?? null;
+    return RegExp(phoneNumberPattern).firstMatch(s)?.group(1);
   }
 
   /// Get the first phone number from text [s] base on Regex [pattern].
@@ -243,10 +243,9 @@ class StringUtils {
       }
     }
     return RegExp(pattern ?? phoneNumberPattern)
-            .firstMatch(input)
-            ?.group(1)
-            ?.trim() ??
-        null;
+        .firstMatch(input)
+        ?.group(1)
+        ?.trim();
   }
 
   static bool isBool(String value) {

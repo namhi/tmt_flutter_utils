@@ -22,7 +22,7 @@ DateTime getFirstDateOfMonth(DateTime date) {
 }
 
 DateTime getLastDateOfMonth(DateTime date) {
-  var lastDate = new DateTime(date.year, date.month + 1, 0);
+  var lastDate = DateTime(date.year, date.month + 1, 0);
   return DateTime(
       lastDate.year, lastDate.month, lastDate.day, 23, 59, 59, 999, 999);
 }

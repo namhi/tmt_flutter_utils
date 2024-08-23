@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tmt_dart_utils/tmt_dart_extensions.dart';
 import 'package:tmt_flutter_utils/tmt_flutter_utils.dart';
 
 class TestObject {

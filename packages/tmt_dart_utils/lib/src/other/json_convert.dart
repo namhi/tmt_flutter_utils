@@ -16,6 +16,7 @@ class JsonConvert<T> {
   JsonConvert({this.configs});
   final Map<Type, ConvertJsonToObject>? configs;
 
+  // ignore: avoid_shadowing_type_parameters
   T deserialize<T>(Map<String, dynamic> json) {
     if (configs![T] != null) {
       ConvertJsonToObject fun = configs![T]!;
