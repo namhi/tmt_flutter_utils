@@ -26,6 +26,7 @@ dependencies:
     git:
       url: https://github.com/namhi/tmt_flutter_utils.git
       path: packages/tmt_dart_utils/
+      ref: 1.2.3
   test:
   flutter:
     sdk: flutter
