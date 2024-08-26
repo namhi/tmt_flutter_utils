@@ -5,4 +5,4 @@ environment:
 
 dependencies:
   intl: ^0.18.0
-  melos: ^5.3.0
+  melos: ^6.1.0
