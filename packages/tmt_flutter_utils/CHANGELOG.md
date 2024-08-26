@@ -1,3 +1,7 @@
-## 0.0.1
+# 1.2.7
 
-* TODO: Describe initial release.
+* Update depedencies
+
+# 1.2.6
+
+* refactor: Optimize imports
