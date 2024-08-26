@@ -1,3 +1,7 @@
+## 1.2.6
+
+* refactor: Optimize imports
+
 ## 1.2.5
 
 * Update depedencies
