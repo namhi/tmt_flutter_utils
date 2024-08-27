@@ -1,3 +1,8 @@
+
+# 1.2.8
+
+    * Update depedencies
+
 # 1.2.7
 
 * Update depedencies
