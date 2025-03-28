@@ -1,3 +1,7 @@
+## 1.4.0
+
+ - **FEAT**: add bool and string extension method.
+
 ## 1.3.0
 
  - **REFACTOR**: Fix some lint.

@@ -1,6 +1,6 @@
 name: tmt_dart_utils
 description: The sets of utilities and extension method for Dart projects.
-version: 1.3.0
+version: 1.4.0
 repository: https://github.com/namhi/tmt_flutter_utils/tree/master/packages/tmt_dart_utils
 
 environment:

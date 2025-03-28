@@ -15,6 +15,32 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`tmt_dart_utils` - `v1.4.0`](#tmt_dart_utils---v140)
+ - [`tmt_flutter_utils` - `v1.3.0`](#tmt_flutter_utils---v130)
+
+---
+
+#### `tmt_dart_utils` - `v1.4.0`
+
+ - **FEAT**: add bool and string extension method.
+
+#### `tmt_flutter_utils` - `v1.3.0`
+
+ - **FEAT**: add bool and string extension method.
+
+
+## 2025-03-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tmt_dart_utils` - `v1.3.0`](#tmt_dart_utils---v130)
  - [`tmt_flutter_utils` - `v1.2.9`](#tmt_flutter_utils---v129)
 
