@@ -1,3 +1,9 @@
+## 1.3.0
+
+ - **FIX**: depedency.
+ - **FIX**: version app.
+ - **FEAT**: add bool and string extension method.
+
 ## 1.2.9
 
  - **FIX**: version app.
