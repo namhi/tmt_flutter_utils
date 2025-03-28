@@ -1,0 +1,4 @@
+name: tmt_flutter_utils
+sdkPath: .fvm/flutter_sdk
+packages:
+  - packages/*

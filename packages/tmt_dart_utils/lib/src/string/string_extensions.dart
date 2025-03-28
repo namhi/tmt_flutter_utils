@@ -16,6 +16,18 @@ extension StringNullExtensionsEx on String? {
   String get valueOrEmpty => this != null ? this! : '';
   bool get isNullOrBlank => this == null || this == '';
   bool get isNotNullOrBlank => this != null && this != '';
+
+  /// Returns this string if it's not null, otherwise returns [defaultValue].
+  ///
+  /// Example:
+  /// ```dart
+  /// String? nullableString;
+  /// print(nullableString.getOrElse('default')); // prints 'default'
+  ///
+  /// String? nonNullString = 'hello';
+  /// print(nonNullString.getOrElse('default')); // prints 'hello'
+  /// ```
+  String getOrElse(String defaultValue) => this ?? defaultValue;
 }
 
 extension StringExtensions on String {

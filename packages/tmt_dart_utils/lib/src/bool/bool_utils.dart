@@ -24,4 +24,17 @@ extension BoolExtensionNullable on bool? {
   /// Default value is false
   bool valueOrDefault([bool defaultValue = false]) =>
       this != null ? this! : defaultValue;
+
+  /// Returns the current boolean value if it is not null,
+  /// otherwise returns the result of calling [defaultValue].
+  ///
+  /// The [defaultValue] function is only called if the current value is null.
+  ///
+  /// Example:
+  /// ```dart
+  /// bool? value;
+  /// final result = value.getOrElse(() => true); // returns true
+  /// ```
+  bool getOrElse(bool Function() defaultValue) =>
+      this != null ? this! : defaultValue();
 }
