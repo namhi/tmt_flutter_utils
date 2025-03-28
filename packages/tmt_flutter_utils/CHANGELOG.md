@@ -1,3 +1,8 @@
+## 1.2.9
+
+ - **REFACTOR**: Fix some lint.
+ - **REFACTOR**: imports.
+
 
 # 1.2.8
 

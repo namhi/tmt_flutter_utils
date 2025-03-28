@@ -1,6 +1,6 @@
 name: tmt_flutter_utils
-description:  Extension method and utils library using for flutter project.
-version: 1.2.8
+description: Extension method and utils library using for flutter project.
+version: 1.2.9
 repository: https://github.com/namhi/tmt_flutter_utils.git
 issue_tracker: https://github.com/namhi/tmt_flutter_utils/issues
 
@@ -13,19 +13,18 @@ platforms:
   windows:
 
 environment:
-  sdk: '>=3.0.6 <4.0.0'
+  sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
-  intl: '>=0.17.0 <=0.19.1'
+  intl: ">=0.17.0 <=0.20.2"
   diacritic: ^0.1.3
   timeago: ^3.3.0
   crypto: ^3.0.2
-  tmt_dart_utils: ^1.2.8
+  tmt_dart_utils: ^1.3.0
   flutter:
     sdk: flutter
-  collection: '>=1.17.1'
+  collection: ">=1.17.1"
   characters: ^1.3.0
-
 
 dev_dependencies:
   flutter_test:
