@@ -1,3 +1,7 @@
+## 1.2.10
+
+ - **FIX**: version app.
+
 ## 1.4.0
 
  - **FEAT**: add bool and string extension method.
