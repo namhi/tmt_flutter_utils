@@ -1,4 +1,0 @@
-# melos_managed_dependency_overrides: tmt_dart_utils
-dependency_overrides:
-  tmt_dart_utils:
-    path: ../tmt_dart_utils
