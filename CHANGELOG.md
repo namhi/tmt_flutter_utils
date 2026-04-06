@@ -15,6 +15,35 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`tmt_dart_utils` - `v1.4.0`](#tmt_dart_utils---v140)
+ - [`tmt_flutter_utils` - `v1.4.0`](#tmt_flutter_utils---v140)
+
+---
+
+#### `tmt_dart_utils` - `v1.4.0`
+
+ - **FIX**: version app.
+ - **FEAT**: update Flutter SDK version to stable and adjust workspace configuration.
+ - **FEAT**: add tryRemoveDiacritics with fallback to original value.
+ - **FEAT**: add bool and string extension method.
+
+#### `tmt_flutter_utils` - `v1.4.0`
+
+ - **FEAT**: update Flutter SDK version to stable and adjust workspace configuration.
+
+
+## 2026-04-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tmt_dart_utils` - `v1.3.0`](#tmt_dart_utils---v130)
  - [`tmt_flutter_utils` - `v1.3.1`](#tmt_flutter_utils---v131)
 

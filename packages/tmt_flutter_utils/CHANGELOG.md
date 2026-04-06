@@ -1,3 +1,7 @@
+## 1.4.0
+
+ - **FEAT**: update Flutter SDK version to stable and adjust workspace configuration.
+
 ## 1.3.1
 
  - **FIX**: depedency.

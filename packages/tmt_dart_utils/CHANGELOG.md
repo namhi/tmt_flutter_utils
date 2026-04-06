@@ -1,3 +1,10 @@
+## 1.4.0
+
+ - **FIX**: version app.
+ - **FEAT**: update Flutter SDK version to stable and adjust workspace configuration.
+ - **FEAT**: add tryRemoveDiacritics with fallback to original value.
+ - **FEAT**: add bool and string extension method.
+
 ## 1.3.0
 
  - **FEAT**: add tryRemoveDiacritics with fallback to original value.
