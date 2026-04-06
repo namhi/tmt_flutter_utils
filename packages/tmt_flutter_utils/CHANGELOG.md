@@ -1,3 +1,8 @@
+## 1.4.1 - 2026-04-06
+
+- **TEST**: Add comprehensive unit tests for all utility extensions and classes
+- **DOCS**: Enhance README.md with organized extension method examples and documentation
+
 ## 1.4.0
 
  - **FEAT**: update Flutter SDK version to stable and adjust workspace configuration.
