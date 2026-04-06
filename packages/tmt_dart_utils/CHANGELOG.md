@@ -1,3 +1,7 @@
+## 1.3.0
+
+ - **FEAT**: add tryRemoveDiacritics with fallback to original value.
+
 ## 1.2.10
 
  - **FIX**: version app.

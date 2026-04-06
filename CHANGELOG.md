@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-04-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tmt_dart_utils` - `v1.3.0`](#tmt_dart_utils---v130)
+ - [`tmt_flutter_utils` - `v1.3.1`](#tmt_flutter_utils---v131)
+
+---
+
+#### `tmt_dart_utils` - `v1.3.0`
+
+ - **FEAT**: add tryRemoveDiacritics with fallback to original value.
+
+#### `tmt_flutter_utils` - `v1.3.1`
+
+ - **FIX**: depedency.
+ - **FIX**: version app.
+
+
 ## 2025-03-28
 
 ### Changes
