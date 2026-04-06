@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(fvm install:*)",
-      "Bash(fvm use:*)"
+      "Bash(fvm use:*)",
+      "Bash(dart test:*)",
+      "Bash(flutter test:*)",
+      "mcp__dart__run_tests"
     ]
   }
 }
