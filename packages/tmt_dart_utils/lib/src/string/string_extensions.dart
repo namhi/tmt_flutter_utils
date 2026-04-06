@@ -108,6 +108,19 @@ extension StringExtensions on String {
     return diacritic.removeDiacritics(key);
   }
 
+  /// Safely removes diacritics from this string, falling back to the original value if an error occurs.
+  ///
+  /// Unlike [removeDiacritics], this method catches any exceptions and returns the original
+  /// string instead of propagating the error.
+  ///
+  /// Example:
+  /// ```dart
+  /// 'Đây là Tiếng Việt'.tryRemoveDiacritics(); // 'Day la Tieng Viet'
+  /// 'Hello World'.tryRemoveDiacritics(); // 'Hello World' (no diacritics to remove)
+  /// ```
+  String tryRemoveDiacritics([bool toLower = false]) =>
+      StringUtils.tryRemoveDiacritics(this, toLower);
+
   /// Split a string into many chunks by chunkSize
   /// Example: 'abcdefghijk' -> [abcd, efgh, ijk] if chunkSize = 4
   List<String> chunk(int chunkSize) {

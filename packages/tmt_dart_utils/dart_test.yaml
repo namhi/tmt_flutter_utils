@@ -1,0 +1,5 @@
+# Test configuration for tmt_dart_utils
+# Use VM platform to avoid frontend_server issues (this is a pure Dart package, not Flutter)
+tags:
+  platform:
+    platform: vm

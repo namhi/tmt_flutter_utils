@@ -192,6 +192,24 @@ class StringUtils {
     return removeDiacritics(key);
   }
 
+  /// Safely removes diacritics from a string, falling back to the original value if an error occurs.
+  ///
+  /// Unlike [removeVietnameseMark] and [removeDiacritics], this method catches any exceptions
+  /// and returns the original input string instead of propagating the error.
+  ///
+  /// Example:
+  /// ```dart
+  /// StringUtils.tryRemoveDiacritics('Đây là Tiếng Việt'); // 'Day la Tieng Viet'
+  /// StringUtils.tryRemoveDiacritics('Hello World'); // 'Hello World' (no diacritics to remove)
+  /// ```
+  static String tryRemoveDiacritics(String s, [bool toLower = false]) {
+    try {
+      return removeVietnameseMark(s, toLower);
+    } catch (e) {
+      return s;
+    }
+  }
+
   /// Trim a string at [startAt]
   static String? trimUnicode(String input, int startAt, [prefix = "..."]) {
     // if (input == null) return null;
