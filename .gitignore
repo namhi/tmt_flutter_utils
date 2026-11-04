@@ -78,3 +78,6 @@ build/
 # FVM Version Cache
 .fvm/
 **/pubspec_overrides.yaml
+
+# Claude Code local settings
+.claude/
