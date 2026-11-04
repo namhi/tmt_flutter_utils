@@ -6,4 +6,5 @@
 
 | ID | Category | Skill | Tags | Summary | Conf | File |
 |----|----------|-------|------|---------|------|------|
+| 20261104-002 | bugfix | mb-fix | string-utils,testing,mb-fix | Empty-input guards in split/join pipelines preserve empty segments — derive test expectations from pipeline semantics |  | 20261104-002_empty-input-guards-in-splitjoin-pipelines-preserve-empty.md |
 | 20261104-001 | bugfix | mb-investigate | string-utils,testing,mb-investigate | Tests must assert desired behavior, not codify existing crashes |  | 20261104-001_tests-must-assert-desired-behavior-not-codify-existing.md |

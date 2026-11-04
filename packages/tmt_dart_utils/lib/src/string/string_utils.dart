@@ -61,7 +61,11 @@ class StringUtils {
   ///
   /// * "công ty quảng cáo" -> "Công ty quảng cáo"
   /// * "CÔNG TY QUẢNG CÁO" -> "Công ty quảng cáo"'
+  /// * "" -> ""
+  ///
+  /// Returns [s] unchanged when empty.
   static String capitalize(String s, {bool allWords = false}) {
+    if (s.isEmpty) return s;
     if (allWords) {
       var words = s.split(' ');
       var capitalized = [];

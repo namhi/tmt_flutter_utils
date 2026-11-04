@@ -111,8 +111,13 @@ void main() {
         expect(StringUtils.capitalize('THE QUICK BROWN FOX', allWords: true), 'The Quick Brown Fox');
       });
 
-      test('should handle empty string', () {
-        expect(() => StringUtils.capitalize(''), throwsRangeError);
+      test('should return empty string unchanged', () {
+        expect(StringUtils.capitalize(''), '');
+      });
+
+      test('should not crash on consecutive spaces with allWords', () {
+        // Empty words return '' — spacing is preserved, not collapsed
+        expect(StringUtils.capitalize('a  b', allWords: true), 'A  B');
       });
 
       test('should handle single character', () {
