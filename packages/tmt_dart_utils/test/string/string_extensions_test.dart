@@ -551,6 +551,10 @@ void main() {
         // capitalize() lowercases everything after the first character
         expect('Hello World'.capitalize(), 'Hello world');
       });
+
+      test('should return empty string unchanged', () {
+        expect(''.capitalize(), '');
+      });
     });
 
     group('urlEncode', () {
