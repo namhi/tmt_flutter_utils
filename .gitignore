@@ -81,3 +81,6 @@ build/
 
 # Claude Code local settings
 .claude/
+
+# mb-dev-ai task artifacts and learnings
+.mb_dev_ai/
