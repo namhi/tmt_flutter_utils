@@ -1,3 +1,10 @@
+## 1.5.0
+
+ - **FIX**(string-utils): guard capitalize against empty input (#5).
+ - **FIX**: version app.
+ - **FEAT**: update Flutter SDK version to stable and adjust workspace configuration.
+ - **FEAT**: add tryRemoveDiacritics with fallback to original value.
+
 ## 1.4.0
 
  - **FIX**: version app.

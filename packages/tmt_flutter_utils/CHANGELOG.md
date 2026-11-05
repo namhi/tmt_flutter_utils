@@ -1,3 +1,10 @@
+## 1.5.0
+
+ - **FIX**: depedency.
+ - **FIX**: version app.
+ - **FEAT**: update Flutter SDK version to stable and adjust workspace configuration.
+ - **DOCS**: Update README.md to enhance string extension methods documentation.
+
 ## 1.4.1 - 2026-04-06
 
 - **TEST**: Add comprehensive unit tests for all utility extensions and classes

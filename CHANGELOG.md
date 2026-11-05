@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-11-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tmt_dart_utils` - `v1.5.0`](#tmt_dart_utils---v150)
+ - [`tmt_flutter_utils` - `v1.5.0`](#tmt_flutter_utils---v150)
+
+---
+
+#### `tmt_dart_utils` - `v1.5.0`
+
+ - **FIX**(string-utils): guard capitalize against empty input (#5).
+ - **FIX**: version app.
+ - **FEAT**: update Flutter SDK version to stable and adjust workspace configuration.
+ - **FEAT**: add tryRemoveDiacritics with fallback to original value.
+
+#### `tmt_flutter_utils` - `v1.5.0`
+
+ - **FIX**: depedency.
+ - **FIX**: version app.
+ - **FEAT**: update Flutter SDK version to stable and adjust workspace configuration.
+ - **DOCS**: Update README.md to enhance string extension methods documentation.
+
+
 ## 2026-04-06
 
 ### Changes
