@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`tmt_dart_utils` - `v1.5.1`](#tmt_dart_utils---v151)
+ - [`tmt_flutter_utils` - `v1.5.1`](#tmt_flutter_utils---v151)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `tmt_flutter_utils` - `v1.5.1`
+
+---
+
+#### `tmt_dart_utils` - `v1.5.1`
+
+ - **FIX**(tmt_dart_utils): honor format/repeat contracts, repair broken test files.
+
+
+## 2026-11-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tmt_dart_utils` - `v1.5.0`](#tmt_dart_utils---v150)
  - [`tmt_flutter_utils` - `v1.5.0`](#tmt_flutter_utils---v150)
 

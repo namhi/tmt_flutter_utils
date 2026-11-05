@@ -1,3 +1,7 @@
+## 1.5.1
+
+ - **FIX**(tmt_dart_utils): honor format/repeat contracts, repair broken test files.
+
 ## 1.5.0
 
  - **FIX**(string-utils): guard capitalize against empty input (#5).
