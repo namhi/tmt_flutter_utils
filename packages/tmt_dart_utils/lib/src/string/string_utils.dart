@@ -314,15 +314,17 @@ class StringUtils {
     return nullValue;
   }
 
-  /// Repeat string [input] [n] times with [separator]
+  /// Repeat string [input] [n] times with [separator].
+  ///
+  /// Returns '' when [n] is zero; throws for negative [n].
   ///
   /// Example:
   /// ```dart
   /// print(StringUtils.repeat('hello', 3, ':')); // hello:hello:hello
   /// ```
   static String repeat(String input, int n, [String separator = '']) {
-    if (n < 1) {
-      throw ArgumentError('The value of n must greater than 0');
+    if (n < 0) {
+      throw ArgumentError('The value of n must not be negative');
     }
 
     String output = '';

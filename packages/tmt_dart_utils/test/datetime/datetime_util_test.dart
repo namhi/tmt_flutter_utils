@@ -117,7 +117,8 @@ void main() {
         final now = DateTime(2025, 1, 30, 10, 30, 45);
         final range = getTimeRangeLast28Day(now);
         expect(range.type, DateTimeRangeType.DAY);
-        expect(range.startDate, DateTime(2025, 1, 2, 0, 0, 0));
+        // Inclusive window: today - 27 days (same convention as getTimeRangeLast7Day)
+        expect(range.startDate, DateTime(2025, 1, 3, 0, 0, 0));
         expect(range.endDate, DateTime(2025, 1, 30, 23, 59, 59, 999, 999));
       });
     });
@@ -127,7 +128,8 @@ void main() {
         final now = DateTime(2025, 1, 31, 10, 30, 45);
         final range = getTimeRangeLast30Day(now);
         expect(range.type, DateTimeRangeType.DAY);
-        expect(range.startDate, DateTime(2025, 1, 1, 0, 0, 0));
+        // Inclusive window: today - 29 days (same convention as getTimeRangeLast7Day)
+        expect(range.startDate, DateTime(2025, 1, 2, 0, 0, 0));
         expect(range.endDate, DateTime(2025, 1, 31, 23, 59, 59, 999, 999));
       });
     });
@@ -137,7 +139,8 @@ void main() {
         final now = DateTime(2025, 4, 15, 10, 30, 45);
         final range = getTimeRangeLast90Day(now);
         expect(range.type, DateTimeRangeType.DAY);
-        expect(range.startDate, DateTime(2025, 1, 15, 0, 0, 0));
+        // Inclusive window: today - 89 days (same convention as getTimeRangeLast7Day)
+        expect(range.startDate, DateTime(2025, 1, 16, 0, 0, 0));
         expect(range.endDate, DateTime(2025, 4, 15, 23, 59, 59, 999, 999));
       });
     });
@@ -148,8 +151,8 @@ void main() {
         final range = getTimeRangeThisWeek(now);
         expect(range.type, DateTimeRangeType.WEEK);
         expect(range.name, 'Tuần này');
-        expect(range.startDate.weekday, DateTime.monday);
-        expect(range.endDate.weekday, DateTime.sunday);
+        expect(range.startDate!.weekday, DateTime.monday);
+        expect(range.endDate!.weekday, DateTime.sunday);
       });
     });
 
@@ -168,7 +171,7 @@ void main() {
         final range = getTimeRangeThisMonth(now);
         expect(range.type, DateTimeRangeType.MONTH);
         expect(range.name, 'Tháng này');
-        expect(range.startDate.day, 1);
+        expect(range.startDate!.day, 1);
       });
     });
 
@@ -179,7 +182,7 @@ void main() {
         expect(range.type, DateTimeRangeType.MONTH);
         expect(range.name, 'Tháng trước');
         expect(range.startDate, DateTime(2025, 1, 1, 0, 0, 0));
-        expect(range.endDate.month, 1); // January
+        expect(range.endDate!.month, 1); // January
       });
     });
 
@@ -252,7 +255,7 @@ void main() {
 
       test('should return day/month when date is in current year but different month', () {
         final today = DateTime(2025, 1, 15, 10, 30, 45);
-        final date = DateTime(2024, 12, 10);
+        final date = DateTime(2025, 12, 10);
         expect(datetimeToStringSort(date, today), '10/12');
       });
 

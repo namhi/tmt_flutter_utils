@@ -1,5 +1,4 @@
 import 'package:test/test.dart';
-import 'package:tmt_dart_utils/tmt_dart_extensions.dart';
 import 'package:tmt_dart_utils/src/enum/enum_until.dart';
 
 enum TestEnum { value1, value2, value3 }

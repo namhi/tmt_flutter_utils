@@ -16,27 +16,28 @@ class NumUtils {
     required int precision,
     required num input,
   }) {
+    if (precision < 0 || precision > 20) {
+      throw ArgumentError('precision must be between 0 and 20');
+    }
     if (input is int) {
       final real =
           getNumberWithThousandSeparator(input.toString(), thousandSeparator);
 
-      final result = '$real${precision > 0 ? '${decimalSeparator}00' : ''}';
+      final result =
+          '$real${precision > 0 ? '$decimalSeparator${'0'.repeat(precision)}' : ''}';
       return result;
     }
-    final String inputString = input.toString();
-    final inputStringSplit = inputString.split('.');
-    final realString = inputStringSplit[0];
+    // Round to [precision] decimals, then thousand-separate the integer part.
+    final roundedSplit = input.toStringAsFixed(precision).split('.');
     final realStringWithThousand =
-        getNumberWithThousandSeparator(realString, thousandSeparator);
+        getNumberWithThousandSeparator(roundedSplit[0], thousandSeparator);
 
     if (precision == 0) {
       return realStringWithThousand;
-    } else {
-      final decimalString =
-          inputStringSplit.length > 1 ? inputStringSplit[1] : null;
-
-      return '$realStringWithThousand$decimalSeparator${decimalString ?? '0'.repeat(precision)}';
     }
+    final decimalString =
+        roundedSplit.length > 1 ? roundedSplit[1] : '0'.repeat(precision);
+    return '$realStringWithThousand$decimalSeparator$decimalString';
   }
 
   /// Add thousand sign to raw input number string.

@@ -463,8 +463,11 @@ void main() {
         expect(StringUtils.repeat('a', 4, '-'), '-a-a-a-a');
       });
 
-      test('should throw when n < 1', () {
-        expect(() => StringUtils.repeat('test', 0), throwsArgumentError);
+      test('should return empty string when n is 0', () {
+        expect(StringUtils.repeat('test', 0), '');
+      });
+
+      test('should throw when n is negative', () {
         expect(() => StringUtils.repeat('test', -1), throwsArgumentError);
       });
 

@@ -64,7 +64,8 @@ void main() {
             precision: 2,
             input: 1234.5678,
           );
-          expect(result, '1.234,56');
+          // 1234.5678 rounds to .57 at precision 2
+          expect(result, '1.234,57');
         });
 
         test('should format double with different precision', () {
@@ -74,7 +75,7 @@ void main() {
             precision: 4,
             input: 1234.5678,
           );
-          expect(result, '1,235');
+          expect(result, '1.234,5678');
         });
 
         test('should handle zero with precision', () {
@@ -188,12 +189,14 @@ void main() {
         );
       });
 
-      test('should handle zero', () => expect(NumUtils.getNumberWithThousandSeparator('0', ','), '0'););
+      test('should handle zero', () => expect(NumUtils.getNumberWithThousandSeparator('0', ','), '0'));
 
       test('should handle decimal numbers', () {
+        // String formatter: digits after the separator are dropped, not rounded
+        // (rounding happens upstream in toStringFormatWithOption).
         expect(
           NumUtils.getNumberWithThousandSeparator('12345.67', ','),
-          '12,346',
+          '12,345',
         );
       });
 
