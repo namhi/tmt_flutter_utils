@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`tmt_flutter_utils` - `v1.5.2`](#tmt_flutter_utils---v152)
+
+---
+
+#### `tmt_flutter_utils` - `v1.5.2`
+
+ - **FIX**(tmt_flutter_utils): repair test suite, fix padding/fromHex/map lib bugs.
+
+
+## 2026-11-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tmt_dart_utils` - `v1.5.1`](#tmt_dart_utils---v151)
  - [`tmt_flutter_utils` - `v1.5.1`](#tmt_flutter_utils---v151)
 

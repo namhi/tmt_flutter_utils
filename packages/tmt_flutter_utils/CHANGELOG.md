@@ -1,3 +1,7 @@
+## 1.5.2
+
+ - **FIX**(tmt_flutter_utils): repair test suite, fix padding/fromHex/map lib bugs.
+
 ## 1.5.1
 
  - Update a dependency to the latest release.
