@@ -47,7 +47,8 @@ void main() {
       });
 
       test('should handle whitespace only when ignoreWhitespace is false', () {
-        expect(FlutterStringUtils.hasOnlyEmojis('   ', ignoreWhitespace: false), true);
+        // Whitespace is not stripped, and spaces are not emojis
+        expect(FlutterStringUtils.hasOnlyEmojis('   ', ignoreWhitespace: false), false);
       });
 
       test('should return false for numbers', () {

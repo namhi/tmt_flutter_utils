@@ -1,222 +1,262 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:tmt_flutter_utils/tmt_flutter_utils.dart';
 
-class MockBuildContext extends Mock implements BuildContext {}
-
-class FakeWidget extends StatelessWidget {
-  const FakeWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) => const Placeholder();
-}
-
 void main() {
-  // Setup fallback values for mocktail
-  registerFallbackValue(const FakeWidget());
-  registerFallbackValue(const MaterialApp());
-
   group('ContextExtensions', () {
-    late BuildContext context;
+    /// Pumps a MaterialApp with a controlled [MediaQuery] and captures the
+    /// BuildContext below it, so [ContextExtensions] read real widget-tree
+    /// data instead of a mocked framework.
+    Future<BuildContext> pumpContext(
+      WidgetTester tester, {
+      Size size = const Size(375, 667),
+      EdgeInsets viewInsets = EdgeInsets.zero,
+      EdgeInsets viewPadding = EdgeInsets.zero,
+      Widget? child,
+    }) async {
+      late BuildContext captured;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: MediaQuery(
+            data: MediaQueryData(
+              size: size,
+              viewInsets: viewInsets,
+              viewPadding: viewPadding,
+            ),
+            child: Builder(
+              builder: (context) {
+                captured = context;
+                return child ?? const SizedBox.shrink(key: Key('home'));
+              },
+            ),
+          ),
+        ),
+      );
+      return captured;
+    }
 
-    setUp(() {
-      context = MockBuildContext();
-    });
+    /// Pumps a bare Builder with NO MediaQuery ancestor.
+    Future<BuildContext> pumpWithoutMediaQuery(WidgetTester tester) async {
+      late BuildContext captured;
+      await tester.pumpWidget(
+        Builder(
+          builder: (context) {
+            captured = context;
+            return const SizedBox.shrink();
+          },
+        ),
+      );
+      return captured;
+    }
 
     group('mediaQuerySize', () {
-      test('should return media query size', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(375, 667));
+      testWidgets('should return media query size', (tester) async {
+        final context = await pumpContext(tester, size: const Size(375, 667));
         expect(context.mediaQuerySize, const Size(375, 667));
       });
     });
 
     group('height', () {
-      test('should return height from media query size', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(375, 667));
+      testWidgets('should return height from media query size', (tester) async {
+        final context = await pumpContext(tester, size: const Size(375, 667));
         expect(context.height, 667.0);
       });
 
-      test('should return 0.0 when media query size is not available', () {
-        when(() => MediaQuery.of(context)).thenThrow(
-          const FlutterError('No MediaQuery found'),
-        );
-        // The extension will throw, which is expected behavior
-        expect(() => context.height, throwsA(isA<FlutterError>()));
+      testWidgets('should fall back to the view size when no MediaQuery ancestor exists',
+          (tester) async {
+        // Modern Flutter: MediaQuery.of falls back to the attached view's size
+        // (default test surface is 800x600) instead of throwing.
+        final context = await pumpWithoutMediaQuery(tester);
+        expect(context.height, 600.0);
       });
     });
 
     group('width', () {
-      test('should return width from media query size', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(375, 667));
+      testWidgets('should return width from media query size', (tester) async {
+        final context = await pumpContext(tester, size: const Size(375, 667));
         expect(context.width, 375.0);
       });
     });
 
     group('theme', () {
-      test('should return theme', () {
-        final themeData = ThemeData.light();
-        when(() => Theme.of(context)).thenReturn(themeData);
-        expect(context.theme, themeData);
+      testWidgets('should return theme', (tester) async {
+        final context = await pumpContext(tester);
+        expect(context.theme, isA<ThemeData>());
       });
     });
 
     group('textTheme', () {
-      test('should return text theme from theme', () {
-        final themeData = ThemeData.light();
-        final textTheme = TextTheme();
-        when(() => Theme.of(context)).thenReturn(themeData);
-        // The textTheme comes from the theme, so we need to access it through theme
+      testWidgets('should return text theme from theme', (tester) async {
+        final context = await pumpContext(tester);
         expect(context.textTheme, isA<TextTheme>());
       });
     });
 
     group('mediaQueryViewInsets', () {
-      test('should return media query view insets', () {
-        when(() => MediaQuery.of(context).viewInsets).thenReturn(EdgeInsets.zero);
+      testWidgets('should return media query view insets', (tester) async {
+        final context = await pumpContext(tester);
         expect(context.mediaQueryViewInsets, EdgeInsets.zero);
       });
 
-      test('should return non-zero insets when keyboard is open', () {
-        when(() => MediaQuery.of(context).viewInsets).thenReturn(
+      testWidgets('should return non-zero insets when keyboard is open',
+          (tester) async {
+        final context = await pumpContext(
+          tester,
+          viewInsets: const EdgeInsets.only(bottom: 300),
+        );
+        expect(
+          context.mediaQueryViewInsets,
           const EdgeInsets.only(bottom: 300),
         );
-        expect(context.mediaQueryViewInsets, const EdgeInsets.only(bottom: 300));
       });
     });
 
     group('mediaQueryViewPadding', () {
-      test('should return media query view padding', () {
-        when(() => MediaQuery.of(context).viewPadding).thenReturn(EdgeInsets.zero);
-        expect(context.mediaQueryViewPadding, EdgeInsets.zero);
+      testWidgets('should return media query view padding', (tester) async {
+        final context = await pumpContext(
+          tester,
+          viewPadding: const EdgeInsets.only(top: 24),
+        );
+        expect(context.mediaQueryViewPadding, const EdgeInsets.only(top: 24));
       });
     });
 
     group('mediaQueryShortestSide', () {
-      test('should return shortest side from media query size', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(375, 667));
+      testWidgets('should return shortest side from media query size',
+          (tester) async {
+        final context = await pumpContext(tester, size: const Size(375, 667));
         expect(context.mediaQueryShortestSide, 375.0);
       });
 
-      test('should return width for landscape orientation', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(800, 375));
+      testWidgets('should return width for landscape orientation',
+          (tester) async {
+        final context = await pumpContext(tester, size: const Size(800, 375));
         expect(context.mediaQueryShortestSide, 375.0);
       });
     });
 
     group('isPhone', () {
-      test('should return true for phone screen size', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(375, 667));
-        expect(context.isPhone, true);
+      testWidgets('should return true for phone screen size', (tester) async {
+        final context = await pumpContext(tester, size: const Size(375, 667));
+        expect(context.isPhone, isTrue);
       });
 
-      test('should return false for tablet screen size', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(768, 1024));
-        expect(context.isPhone, false);
+      testWidgets('should return false for tablet screen size',
+          (tester) async {
+        final context = await pumpContext(tester, size: const Size(768, 1024));
+        expect(context.isPhone, isFalse);
       });
 
-      test('should return true for small tablet near threshold', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(659, 900));
-        expect(context.isPhone, true);
+      testWidgets('should return true for small tablet near threshold',
+          (tester) async {
+        final context = await pumpContext(tester, size: const Size(659, 900));
+        expect(context.isPhone, isTrue);
       });
     });
 
     group('isSmallTablet', () {
-      test('should return true for small tablet', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(600, 800));
-        expect(context.isSmallTablet, true);
+      testWidgets('should return true for small tablet', (tester) async {
+        final context = await pumpContext(tester, size: const Size(600, 800));
+        expect(context.isSmallTablet, isTrue);
       });
 
-      test('should return false for phone', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(375, 667));
-        expect(context.isSmallTablet, false);
+      testWidgets('should return false for phone', (tester) async {
+        final context = await pumpContext(tester, size: const Size(375, 667));
+        expect(context.isSmallTablet, isFalse);
       });
 
-      test('should return true for large tablet', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(720, 1024));
-        expect(context.isSmallTablet, true);
+      testWidgets('should return true for large tablet', (tester) async {
+        final context = await pumpContext(tester, size: const Size(720, 1024));
+        expect(context.isSmallTablet, isTrue);
       });
     });
 
     group('isLargeTablet', () {
-      test('should return true for large tablet', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(720, 1024));
-        expect(context.isLargeTablet, true);
+      testWidgets('should return true for large tablet', (tester) async {
+        final context = await pumpContext(tester, size: const Size(720, 1024));
+        expect(context.isLargeTablet, isTrue);
       });
 
-      test('should return false for small tablet', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(600, 800));
-        expect(context.isLargeTablet, false);
+      testWidgets('should return false for small tablet', (tester) async {
+        final context = await pumpContext(tester, size: const Size(600, 800));
+        expect(context.isLargeTablet, isFalse);
       });
 
-      test('should return false for phone', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(375, 667));
-        expect(context.isLargeTablet, false);
+      testWidgets('should return false for phone', (tester) async {
+        final context = await pumpContext(tester, size: const Size(375, 667));
+        expect(context.isLargeTablet, isFalse);
       });
     });
 
     group('isTablet', () {
-      test('should return true for small tablet', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(600, 800));
-        expect(context.isTablet, true);
+      testWidgets('should return true for small tablet', (tester) async {
+        final context = await pumpContext(tester, size: const Size(600, 800));
+        expect(context.isTablet, isTrue);
       });
 
-      test('should return true for large tablet', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(720, 1024));
-        expect(context.isTablet, true);
+      testWidgets('should return true for large tablet', (tester) async {
+        final context = await pumpContext(tester, size: const Size(720, 1024));
+        expect(context.isTablet, isTrue);
       });
 
-      test('should return false for phone', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(375, 667));
-        expect(context.isTablet, false);
+      testWidgets('should return false for phone', (tester) async {
+        final context = await pumpContext(tester, size: const Size(375, 667));
+        expect(context.isTablet, isFalse);
       });
     });
 
     group('isKeyboardOpen', () {
-      test('should return true when keyboard is open', () {
-        when(() => MediaQuery.of(context).viewInsets).thenReturn(
-          const EdgeInsets.only(bottom: 300),
+      testWidgets('should return true when keyboard is open', (tester) async {
+        final context = await pumpContext(
+          tester,
+          viewInsets: const EdgeInsets.only(bottom: 300),
         );
-        expect(context.isKeyboardOpen, true);
+        expect(context.isKeyboardOpen, isTrue);
       });
 
-      test('should return false when keyboard is closed', () {
-        when(() => MediaQuery.of(context).viewInsets).thenReturn(EdgeInsets.zero);
-        expect(context.isKeyboardOpen, false);
+      testWidgets('should return false when keyboard is closed',
+          (tester) async {
+        final context = await pumpContext(tester);
+        expect(context.isKeyboardOpen, isFalse);
       });
 
-      test('should return false when viewInsets has only vertical padding', () {
-        when(() => MediaQuery.of(context).viewInsets).thenReturn(
-          const EdgeInsets.only(top: 44, bottom: 0),
+      testWidgets('should return false when viewInsets has only vertical padding',
+          (tester) async {
+        final context = await pumpContext(
+          tester,
+          viewInsets: const EdgeInsets.only(top: 44),
         );
-        expect(context.isKeyboardOpen, false);
+        expect(context.isKeyboardOpen, isFalse);
       });
     });
 
     group('responsiveWidget', () {
-      test('should return mobile widget for phone size', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(375, 667));
-        final mobile = const FakeWidget(key: Key('mobile'));
-        final tablet = const FakeWidget(key: Key('tablet'));
+      testWidgets('should return mobile widget for phone size', (tester) async {
+        final context = await pumpContext(tester, size: const Size(375, 667));
+        const mobile = FakeWidget(key: Key('mobile'));
+        const tablet = FakeWidget(key: Key('tablet'));
 
         final result = context.responsiveWidget(mobile: mobile, tablet: tablet);
         expect(result?.key, mobile.key);
       });
 
-      test('should return tablet widget for tablet size', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(768, 1024));
-        final mobile = const FakeWidget(key: Key('mobile'));
-        final tablet = const FakeWidget(key: Key('tablet'));
+      testWidgets('should return tablet widget for tablet size',
+          (tester) async {
+        final context = await pumpContext(tester, size: const Size(768, 1024));
+        const mobile = FakeWidget(key: Key('mobile'));
+        const tablet = FakeWidget(key: Key('tablet'));
 
         final result = context.responsiveWidget(mobile: mobile, tablet: tablet);
         expect(result?.key, tablet.key);
       });
 
-      test('should return desktop widget for large size', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(1400, 900));
-        final mobile = const FakeWidget(key: Key('mobile'));
-        final tablet = const FakeWidget(key: Key('tablet'));
-        final desktop = const FakeWidget(key: Key('desktop'));
+      testWidgets('should return desktop widget for large size',
+          (tester) async {
+        // shortestSide must reach the 1200 desktop threshold
+        final context = await pumpContext(tester, size: const Size(1400, 1300));
+        const mobile = FakeWidget(key: Key('mobile'));
+        const tablet = FakeWidget(key: Key('tablet'));
+        const desktop = FakeWidget(key: Key('desktop'));
 
         final result = context.responsiveWidget(
           mobile: mobile,
@@ -226,76 +266,136 @@ void main() {
         expect(result?.key, desktop.key);
       });
 
-      test('should return mobile when tablet widget is null', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(768, 1024));
-        final mobile = const FakeWidget(key: Key('mobile'));
+      testWidgets('should return mobile when tablet widget is null',
+          (tester) async {
+        final context = await pumpContext(tester, size: const Size(768, 1024));
+        const mobile = FakeWidget(key: Key('mobile'));
 
         final result = context.responsiveWidget(mobile: mobile);
         expect(result?.key, mobile.key);
       });
 
-      test('should return null when all widgets are null', () {
-        when(() => MediaQuery.of(context).size).thenReturn(const Size(375, 667));
+      testWidgets('should return null when all widgets are null',
+          (tester) async {
+        final context = await pumpContext(tester, size: const Size(375, 667));
         final result = context.responsiveWidget();
         expect(result, isNull);
       });
     });
 
     group('closeKeyboard', () {
-      test('should call unfocus on focus scope', () {
-        final mockFocusScope = MockFocusScopeNode();
-        when(() => FocusScope.of(context)).thenReturn(mockFocusScope);
-        when(() => mockFocusScope.unfocus()).thenReturn(null);
+      testWidgets('should unfocus the focused node', (tester) async {
+        final node = FocusNode();
+        final context = await pumpContext(
+          tester,
+          child: Focus(focusNode: node, child: const SizedBox.shrink()),
+        );
+
+        node.requestFocus();
+        await tester.pump();
+        expect(node.hasFocus, isTrue);
 
         context.closeKeyboard();
-        verify(() => mockFocusScope.unfocus()).called(1);
+        await tester.pump();
+        expect(node.hasFocus, isFalse);
       });
     });
 
     group('unfocus', () {
-      test('should call unfocus on focus scope', () {
-        final mockFocusScope = MockFocusScopeNode();
-        when(() => FocusScope.of(context)).thenReturn(mockFocusScope);
-        when(() => mockFocusScope.unfocus()).thenReturn(null);
+      testWidgets('should unfocus the focused node', (tester) async {
+        final node = FocusNode();
+        final context = await pumpContext(
+          tester,
+          child: Focus(focusNode: node, child: const SizedBox.shrink()),
+        );
+
+        node.requestFocus();
+        await tester.pump();
+        expect(node.hasFocus, isTrue);
 
         context.unfocus();
-        verify(() => mockFocusScope.unfocus()).called(1);
+        await tester.pump();
+        expect(node.hasFocus, isFalse);
       });
     });
 
     group('pop', () {
-      test('should pop navigator when canPop returns true', () {
-        final mockNavigator = MockNavigatorState();
-        when(() => Navigator.of(context)).thenReturn(mockNavigator);
-        when(() => mockNavigator.canPop()).thenReturn(true);
+      testWidgets('should pop navigator when canPop returns true',
+          (tester) async {
+        late BuildContext captured;
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Builder(
+              builder: (context) {
+                return const SizedBox.shrink(key: Key('home'));
+              },
+            ),
+          ),
+        );
+        final navigator = tester.state<NavigatorState>(find.byType(Navigator));
+        final popped = navigator.push<bool>(
+          MaterialPageRoute(
+            builder: (context) {
+              captured = context;
+              return const Scaffold(body: SizedBox.shrink(key: Key('page2')));
+            },
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(navigator.canPop(), isTrue);
 
-        context.pop();
-        verify(() => mockNavigator.pop()).called(1);
+        captured.pop();
+        final result = await popped;
+        expect(result, isNull);
+        // Let the pop transition finish before asserting the page is gone
+        await tester.pumpAndSettle();
+        expect(find.byKey(const Key('page2')), findsNothing);
       });
 
-      test('should not pop navigator when canPop returns false', () {
-        final mockNavigator = MockNavigatorState();
-        when(() => Navigator.of(context)).thenReturn(mockNavigator);
-        when(() => mockNavigator.canPop()).thenReturn(false);
+      testWidgets('should not pop navigator when canPop returns false',
+          (tester) async {
+        final context = await pumpContext(tester);
+        final navigator = tester.state<NavigatorState>(find.byType(Navigator));
+        expect(navigator.canPop(), isFalse);
 
         context.pop();
-        verifyNever(() => mockNavigator.pop());
+        await tester.pump();
+        expect(find.byKey(const Key('home')), findsOneWidget);
       });
 
-      test('should pop with result when provided', () {
-        final mockNavigator = MockNavigatorState();
-        when(() => Navigator.of(context)).thenReturn(mockNavigator);
-        when(() => mockNavigator.canPop()).thenReturn(true);
+      testWidgets('should pop with result when provided', (tester) async {
+        late BuildContext captured;
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Builder(
+              builder: (context) {
+                return const SizedBox.shrink(key: Key('home'));
+              },
+            ),
+          ),
+        );
+        final navigator = tester.state<NavigatorState>(find.byType(Navigator));
+        final popped = navigator.push<String>(
+          MaterialPageRoute(
+            builder: (context) {
+              captured = context;
+              return const Scaffold(body: SizedBox.shrink(key: Key('page2')));
+            },
+          ),
+        );
+        await tester.pumpAndSettle();
 
-        const result = 'result';
-        context.pop(result);
-        verify(() => mockNavigator.pop(result)).called(1);
+        captured.pop('result');
+        final result = await popped;
+        expect(result, 'result');
       });
     });
   });
 }
 
-// Mock classes
-class MockNavigatorState extends Mock implements NavigatorState {}
+class FakeWidget extends StatelessWidget {
+  const FakeWidget({super.key});
 
-class MockFocusScopeNode extends Mock implements FocusScopeNode {}
+  @override
+  Widget build(BuildContext context) => const Placeholder();
+}

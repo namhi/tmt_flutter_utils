@@ -9,7 +9,7 @@ extension WidgetExtensions on Widget {
       double? bottom,
       Key? key}) {
     if (all != null) {
-      return Padding(padding: EdgeInsets.all(all));
+      return Padding(key: key, padding: EdgeInsets.all(all), child: this);
     }
     return Padding(
       key: key,

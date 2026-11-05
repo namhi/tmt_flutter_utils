@@ -40,7 +40,8 @@ void main() {
 
   test('Test isPhoneNumber list', () {
     final Map<String, bool> testValues = {
-      '012345678': true,
+      // 9 digits — the VN mobile pattern requires a 10-digit number
+      '012345678': false,
       '0379566994': true,
       '0903545466': true,
       '0863545466': true,

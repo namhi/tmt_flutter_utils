@@ -4,5 +4,7 @@ export 'package:tmt_dart_utils/tmt_dart_extensions.dart';
 export 'sources/datetime_utils/flutter_datetime_extensions.dart';
 export 'sources/context_utils/context_extensions.dart';
 export 'sources/color_utils/color_extensions.dart';
+export 'sources/color_utils/color_utils.dart';
+export 'sources/map_extensions.dart';
 export 'sources/widget_extensions.dart';
 export 'sources/string_utils.dart';

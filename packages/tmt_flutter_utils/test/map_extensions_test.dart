@@ -8,8 +8,8 @@ class TestModel {
 
   factory TestModel.fromJson(Map<String, dynamic> json) {
     return TestModel(
-      name: json['name'] as String,
-      value: json['value'] as int,
+      name: json['name'] as String? ?? '',
+      value: json['value'] as int? ?? 0,
     );
   }
 }
@@ -18,9 +18,9 @@ void main() {
   group('MapExtensions', () {
     group('toObject', () {
       test('should convert map to object using convert function', () {
-        final map = {'name': 'Test', 'value': 42};
+        final map = <String, dynamic>{'name': 'Test', 'value': 42};
 
-        final result = map.toObject<TestModel>((json) => TestModel.fromJson(json));
+        final result = map.toObject<TestModel>((json) => TestModel.fromJson(json!));
 
         expect(result, isA<TestModel>());
         expect(result?.name, 'Test');
@@ -30,7 +30,7 @@ void main() {
       test('should return null when map is null', () {
         Map<String, dynamic>? map = null;
 
-        final result = map.toObject<TestModel>((json) => TestModel.fromJson(json));
+        final result = map.toObject<TestModel>((json) => TestModel.fromJson(json!));
 
         expect(result, isNull);
       });
@@ -38,7 +38,7 @@ void main() {
       test('should handle empty map', () {
         final map = <String, dynamic>{};
 
-        final result = map.toObject<TestModel>((json) => TestModel.fromJson(json));
+        final result = map.toObject<TestModel>((json) => TestModel.fromJson(json!));
 
         expect(result, isA<TestModel>());
         expect(result?.name, ''); // Default string value
@@ -46,13 +46,13 @@ void main() {
       });
 
       test('should pass through all map data to convert function', () {
-        final map = {
+        final map = <String, dynamic>{
           'name': 'Complex Test',
           'value': 999,
           'extra': 'ignored',
         };
 
-        final result = map.toObject<TestModel>((json) => TestModel.fromJson(json));
+        final result = map.toObject<TestModel>((json) => TestModel.fromJson(json!));
 
         expect(result?.name, 'Complex Test');
         expect(result?.value, 999);
@@ -61,7 +61,7 @@ void main() {
 
     group('toListOfObject', () {
       test('should convert list of maps to list of objects', () {
-        final maps = [
+        final maps = <Map<String, dynamic>>[
           {'name': 'Item 1', 'value': 1},
           {'name': 'Item 2', 'value': 2},
           {'name': 'Item 3', 'value': 3},
@@ -97,7 +97,7 @@ void main() {
       });
 
       test('should handle list with single item', () {
-        final maps = [
+        final maps = <Map<String, dynamic>>[
           {'name': 'Single', 'value': 42},
         ];
 

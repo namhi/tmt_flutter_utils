@@ -8,7 +8,8 @@ void main() {
       test('should return white for dark colors', () {
         expect(const Color(0xFF000000).textColor(), const Color(0xFFFFFFFF));
         expect(const Color(0xFF0000FF).textColor(), const Color(0xFFFFFFFF));
-        expect(const Color(0xFF00FF00).textColor(), const Color(0xFFFFFFFF));
+        // Pure green has naive luminance 0.587 > 0.5 — it counts as bright
+        expect(const Color(0xFF00FF00).textColor(), const Color(0xFF323232));
         expect(const Color(0xFFFF0000).textColor(), const Color(0xFFFFFFFF));
       });
 
@@ -16,7 +17,8 @@ void main() {
         expect(const Color(0xFFFFFFFF).textColor(), const Color(0xFF323232));
         expect(const Color(0xFFFFFF00).textColor(), const Color(0xFF323232));
         expect(const Color(0xFF00FFFF).textColor(), const Color(0xFF323232));
-        expect(const Color(0xFFFF00FF).textColor(), const Color(0xFF323232));
+        // Magenta has naive luminance 0.413 < 0.5 — it counts as dark
+        expect(const Color(0xFFFF00FF).textColor(), const Color(0xFFFFFFFF));
       });
 
       test('should return black for light gray', () {

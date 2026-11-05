@@ -7,22 +7,22 @@ void main() {
     group('padding', () {
       test('should wrap widget with Padding.all when all is provided', () {
         const widget = Text('Test');
-        const padded = widget.padding(all: 16);
+        final padded = widget.padding(all: 16);
 
         expect(padded, isA<Padding>());
         expect(
-          (padded as Padding).padding,
+          padded.padding,
           const EdgeInsets.all(16),
         );
       });
 
       test('should wrap widget with Padding.only when individual values provided', () {
         const widget = Text('Test');
-        const padded = widget.padding(left: 8, top: 16, right: 8, bottom: 16);
+        final padded = widget.padding(left: 8, top: 16, right: 8, bottom: 16);
 
         expect(padded, isA<Padding>());
         expect(
-          (padded as Padding).padding,
+          padded.padding,
           const EdgeInsets.only(left: 8, top: 16, right: 8, bottom: 16),
         );
       });
@@ -30,7 +30,7 @@ void main() {
       test('should set key on Padding widget when provided', () {
         const widget = Text('Test');
         const key = Key('test-key');
-        const padded = widget.padding(
+        final padded = widget.padding(
           left: 8,
           top: 16,
           right: 8,
@@ -38,25 +38,25 @@ void main() {
           key: key,
         );
 
-        expect((padded as Padding).key, key);
+        expect(padded.key, key);
       });
 
       test('should preserve child widget', () {
         const widget = Text('Test');
-        const padded = widget.padding(all: 16);
+        final padded = widget.padding(all: 16);
 
-        expect((padded as Padding).child, widget);
+        expect(padded.child, widget);
       });
     });
 
     group('paddingLeft', () {
       test('should wrap widget with left padding', () {
         const widget = Text('Test');
-        const padded = widget.paddingLeft(value: 16);
+        final padded = widget.paddingLeft(value: 16);
 
         expect(padded, isA<Padding>());
         expect(
-          (padded as Padding).padding,
+          padded.padding,
           const EdgeInsets.only(left: 16),
         );
       });
@@ -64,20 +64,20 @@ void main() {
       test('should set key when provided', () {
         const widget = Text('Test');
         const key = Key('test-key');
-        const padded = widget.paddingLeft(value: 16, key: key);
+        final padded = widget.paddingLeft(value: 16, key: key);
 
-        expect((padded as Padding).key, key);
+        expect(padded.key, key);
       });
     });
 
     group('paddingTop', () {
       test('should wrap widget with top padding', () {
         const widget = Text('Test');
-        const padded = widget.paddingTop(value: 16);
+        final padded = widget.paddingTop(value: 16);
 
         expect(padded, isA<Padding>());
         expect(
-          (padded as Padding).padding,
+          padded.padding,
           const EdgeInsets.only(top: 16),
         );
       });
@@ -85,20 +85,20 @@ void main() {
       test('should set key when provided', () {
         const widget = Text('Test');
         const key = Key('test-key');
-        const padded = widget.paddingTop(value: 16, key: key);
+        final padded = widget.paddingTop(value: 16, key: key);
 
-        expect((padded as Padding).key, key);
+        expect(padded.key, key);
       });
     });
 
     group('paddingRight', () {
       test('should wrap widget with right padding', () {
         const widget = Text('Test');
-        const padded = widget.paddingRight(value: 16);
+        final padded = widget.paddingRight(value: 16);
 
         expect(padded, isA<Padding>());
         expect(
-          (padded as Padding).padding,
+          padded.padding,
           const EdgeInsets.only(right: 16),
         );
       });
@@ -106,20 +106,20 @@ void main() {
       test('should set key when provided', () {
         const widget = Text('Test');
         const key = Key('test-key');
-        const padded = widget.paddingRight(value: 16, key: key);
+        final padded = widget.paddingRight(value: 16, key: key);
 
-        expect((padded as Padding).key, key);
+        expect(padded.key, key);
       });
     });
 
     group('paddingBottom', () {
       test('should wrap widget with bottom padding', () {
         const widget = Text('Test');
-        const padded = widget.paddingBottom(value: 16);
+        final padded = widget.paddingBottom(value: 16);
 
         expect(padded, isA<Padding>());
         expect(
-          (padded as Padding).padding,
+          padded.padding,
           const EdgeInsets.only(bottom: 16),
         );
       });
@@ -127,27 +127,28 @@ void main() {
       test('should set key when provided', () {
         const widget = Text('Test');
         const key = Key('test-key');
-        const padded = widget.paddingBottom(value: 16, key: key);
+        final padded = widget.paddingBottom(value: 16, key: key);
 
-        expect((padded as Padding).key, key);
+        expect(padded.key, key);
       });
     });
 
     group('sliverToBox', () {
       test('should wrap widget with SliverToBoxAdapter', () {
         const widget = Text('Test');
-        const sliver = widget.sliverToBox();
+        final sliver = widget.sliverToBox();
 
         expect(sliver, isA<SliverToBoxAdapter>());
+        // sliverToBox() returns Widget — cast to reach the child
         expect((sliver as SliverToBoxAdapter).child, widget);
       });
 
       test('should set key when provided', () {
         const widget = Text('Test');
         const key = Key('test-key');
-        const sliver = widget.sliverToBox(key: key);
+        final sliver = widget.sliverToBox(key: key);
 
-        expect((sliver as SliverToBoxAdapter).key, key);
+        expect(sliver.key, key);
       });
     });
   });
