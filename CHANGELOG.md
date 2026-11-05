@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`tmt_flutter_utils` - `v1.5.3`](#tmt_flutter_utils---v153)
+
+---
+
+#### `tmt_flutter_utils` - `v1.5.3`
+
+ - **FIX**: update settings and improve test output formatting.
+
+
+## 2026-11-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tmt_flutter_utils` - `v1.5.2`](#tmt_flutter_utils---v152)
 
 ---

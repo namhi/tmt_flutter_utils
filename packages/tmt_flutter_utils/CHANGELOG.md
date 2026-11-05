@@ -1,3 +1,7 @@
+## 1.5.3
+
+ - **FIX**: update settings and improve test output formatting.
+
 ## 1.5.2
 
  - **FIX**(tmt_flutter_utils): repair test suite, fix padding/fromHex/map lib bugs.
