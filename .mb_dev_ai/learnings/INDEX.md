@@ -6,4 +6,5 @@
 
 | ID | Category | Skill | Tags | Summary | Conf | File |
 |----|----------|-------|------|---------|------|------|
+| 20261125-001 | bugfix | mb-fix | string-utils,edge-case,mb-fix | Fixing an edge-case crash in a utils file: sweep sibling functions for the same unguarded pattern in the same pass ... | 9 | 20261125-001_fixing-an-edge-case-crash-in-a-utils-file-sweep-sibling.md |
 | 20261104-001 | bugfix | mb-investigate | string-utils,testing,mb-investigate | Tests must assert desired behavior, not codify existing crashes |  | 20261104-001_tests-must-assert-desired-behavior-not-codify-existing.md |
