@@ -6,9 +6,9 @@ work_type: "fix"
 priority: 2
 board_state: "todo"
 branch: "master"
-status: "auto-fix"
+status: "qa"
 created_at: "2026-11-25T10:32:21.396864Z"
-updated_at: "2026-11-25T10:32:26.423215Z"
+updated_at: "2026-11-26T04:29:06.545375Z"
 created_by: "mb-task-review"
 azure_devops:
   collection: "https://tfs.tpos.dev/MainCollection"
@@ -27,6 +27,10 @@ flow:
     timestamp: "2026-11-25T10:32:21.396864Z"
   - stage: "auto-fix"
     timestamp: "2026-11-25T10:32:26.353938Z"
+  - stage: "code-review"
+    timestamp: "2026-11-25T11:26:51.476114Z"
+  - stage: "qa"
+    timestamp: "2026-11-26T04:29:06.427700Z"
 aitasks: []
 ref:
   requirement: null
@@ -43,6 +47,22 @@ timeline:
     action: "status_change"
     detail: "task-review → auto-fix"
   - timestamp: "2026-11-25T10:32:26.423090Z"
+    action: "source_sync"
+    detail: "azure_devops: skipped (ADO sync skipped: no PAT configured)"
+    success: true
+    error: "ADO sync skipped: no PAT configured"
+  - timestamp: "2026-11-25T11:26:51.476114Z"
+    action: "status_change"
+    detail: "auto-fix → code-review"
+  - timestamp: "2026-11-25T11:26:51.556207Z"
+    action: "source_sync"
+    detail: "azure_devops: skipped (ADO sync skipped: no PAT configured)"
+    success: true
+    error: "ADO sync skipped: no PAT configured"
+  - timestamp: "2026-11-26T04:29:06.427700Z"
+    action: "status_change"
+    detail: "code-review → qa"
+  - timestamp: "2026-11-26T04:29:06.545310Z"
     action: "source_sync"
     detail: "azure_devops: skipped (ADO sync skipped: no PAT configured)"
     success: true
