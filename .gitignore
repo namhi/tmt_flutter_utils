@@ -83,4 +83,4 @@ build/
 .claude/
 
 # mb-dev-ai task artifacts and learnings
-.mb_dev_ai/
+.mb_dev_ai/docs/mb-dev-ai/
