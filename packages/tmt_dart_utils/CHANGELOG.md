@@ -1,3 +1,7 @@
+## 1.5.2
+
+ - **FIX**(string-utils): guard getInitials against empty parts and limitTo overflow (#6).
+
 ## 1.5.1
 
  - **FIX**(tmt_dart_utils): honor format/repeat contracts, repair broken test files.

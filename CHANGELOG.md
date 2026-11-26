@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-11-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tmt_dart_utils` - `v1.5.2`](#tmt_dart_utils---v152)
+ - [`tmt_flutter_utils` - `v1.5.4`](#tmt_flutter_utils---v154)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `tmt_flutter_utils` - `v1.5.4`
+
+---
+
+#### `tmt_dart_utils` - `v1.5.2`
+
+ - **FIX**(string-utils): guard getInitials against empty parts and limitTo overflow (#6).
+
+
 ## 2026-11-05
 
 ### Changes
