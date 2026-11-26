@@ -341,12 +341,22 @@ class StringUtils {
 
   /// Get the first character String on each word in Strings.
   ///
+  /// Empty parts (consecutive/leading/trailing spaces) are ignored and
+  /// [limitTo] is capped at the word count.
+  ///
   /// Ex: The blue sky => Tbs
+  /// Ex: 'The  blue  sky' => Tbs
+  /// Ex: '' => ''
   static String getInitials({required String string, int? limitTo}) {
+    final words =
+        string.split(' ').where((w) => w.isNotEmpty).toList(growable: false);
+    var count = words.length;
+    final limit = limitTo ?? count;
+    if (limit < count) count = limit;
+    if (count < 0) count = 0;
     final buffer = StringBuffer();
-    final split = string.split(' ');
-    for (var i = 0; i < (limitTo ?? split.length); i++) {
-      buffer.write(split[i][0]);
+    for (var i = 0; i < count; i++) {
+      buffer.write(words[i][0]);
     }
 
     return buffer.toString();

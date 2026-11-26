@@ -492,7 +492,19 @@ void main() {
       });
 
       test('should handle empty string', () {
-        expect(() => StringUtils.getInitials(string: ''), throwsRangeError);
+        expect(StringUtils.getInitials(string: ''), '');
+      });
+
+      test('should ignore consecutive spaces', () {
+        expect(StringUtils.getInitials(string: 'The blue  sky'), 'Tbs');
+      });
+
+      test('should ignore leading and trailing spaces', () {
+        expect(StringUtils.getInitials(string: ' Hello '), 'H');
+      });
+
+      test('should clamp limitTo beyond word count', () {
+        expect(StringUtils.getInitials(string: 'Hello', limitTo: 5), 'H');
       });
     });
   });

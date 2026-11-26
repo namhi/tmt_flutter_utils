@@ -534,7 +534,11 @@ void main() {
       });
 
       test('should handle empty string', () {
-        expect(() => ''.getInitials(), throwsA(isA<RangeError>()));
+        expect(''.getInitials(), '');
+      });
+
+      test('should ignore consecutive spaces', () {
+        expect('The blue  sky'.getInitials(), 'Tbs');
       });
     });
 
